@@ -28,7 +28,7 @@ get_header();
 		</div>
 		<div class="about-team">
 			<h1 class="about-team__title">Our Team</h1>
-			<img class="about-team__image flex-image" src="<?php echo esc_url( get_theme_mod( 'logic_department__front_page_logo' ) ); ?>">
+			<img class="about-team__image flex-image" src="<?php the_post_thumbnail_url(); ?>">
 			<div class="about-team__members flex-row">
 				<div class="collapsable collapsable--team-member flex-row__item">
 					<div class="collapsable__header">
