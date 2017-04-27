@@ -1,20 +1,14 @@
 <?php
-function display_service( $service, $last_height ) {
+function display_service( $service ) {
 	$case_study = get_last_case_study_for_service( $service );
 	$service_image_url = esc_url( get_theme_mod( 'logic_department__service-' . $service->name . '-image' ) );
-	$this_height = 0;
-	do {
-		$this_height = rand( 1, 3 );
-	} while ( $this_height === $last_height );
-
 	?>
 
-	<div class="link-block link-block--service masonry-item masonry-item--height-<?php echo $this_height; ?>" style="background-image: url(<?php echo $service_image_url ?>);">
-		<div class="link-block__image-overlay"></div>
+	<div class="link-block link-block--service flex-row__item" style="background-image: url(<?php echo $service_image_url ?>);">
 		<div class="link-block__inner">
 			<h1 class="link-block__title"><?php echo esc_html( $service->name ); ?></h1>
 			<div class="link-block__description"><?php echo esc_html( $service->description ); ?></div>
-			<a href="<?php echo get_permalink( $case_study ); ?>"class="link-block__link">View a related project</a>
+			<a href="<?php echo get_permalink( $case_study ); ?>"class="link-block__link button-link">View a related project</a>
 		</div>
 	</div>
 <?php }

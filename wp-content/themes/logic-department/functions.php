@@ -108,18 +108,16 @@ function logic_department_scripts() {
 	wp_enqueue_script( 'logic-department-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'logic-department-sticky-header', get_template_directory_uri() . '/js/sticky-header.js', array( 'jquery' ), '0.1', true );
 	wp_enqueue_script( 'logic-department', get_template_directory_uri() . '/js/logic-dept.js', array(), '2.0', true );
-	
+	wp_localize_script( 'logic-department', 'ajax', array(
+		'ajax_url' => admin_url( 'admin-ajax.php' ),
+	) );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
-
-	if ( is_page( 'services' ) || get_post_type() == 'case-study' ) {
-		if ( get_post_type() == 'case-study' ) {
-			wp_enqueue_script( 'single-case-study', get_template_directory_uri() . '/js/single-case-study.js', array('jquery'), '0.1', true );
-		}
+	if ( get_post_type() == 'case-study' && ! is_archive() ) {
+		wp_enqueue_script( 'single-case-study', get_template_directory_uri() . '/js/single-case-study.js', array('jquery'), '0.1', true );
+		wp_enqueue_style( 'dashicons' );
 	}
-
-
 }
 add_action( 'wp_enqueue_scripts', 'logic_department_scripts' );
 
@@ -146,41 +144,210 @@ require_once( 'inc/clients.php' );
 */
 require_once( 'inc/services.php' );
 
-function logic_department__add_homepage_statement_meta_box() {
+function logic_department__add_special_meta_boxes() {
 	global $post;
-	if ( get_option( 'page_on_front' ) === $post->ID ) {
-		add_meta_box(
-			'homepage-statement',
-			'Homepage Statement',
-			'logic_department__show_homepage_statement_meta_box',
-			'page',
-			'normal',
-			'high'
-		);
-	} else {
-		return;
-	}
-}
-add_action( 'add_meta_boxes', 'logic_department__add_homepage_statement_meta_box' );
+	$about_args = array(
+		'name' => "about",
+		'fields' => array(
+			'intro-highlighted' => array(
+				'type' => 'full',
+				'display' => 'Highlighted intro text',
+			),
+			'intro-regular' => array(
+				'type' => 'full',
+				'display' => 'Regular intro text',
+			),
+			'services-offered' => array(
+				'type' => 'full',
+				'display' => 'Offered services (use HTML li markup)'
+			),
+			'team-member-1-name' => array(
+				'type' => 'small',
+				'display' => 'First team member name',
+			),
+			'team-member-1-bio' => array(
+				'type' => 'full',
+				'display' => 'First team member bio',
+			),
+			'team-member-2-name' => array(
+				'type' => 'small',
+				'display' => 'Second team member name',
+			),
+			'team-member-2-bio' => array(
+				'type' => 'full',
+				'display' => 'Second team member bio',
+			),
+		),
+	);
+	$home_args = array(
+		'name' => 'home',
+		'fields' => array(
+			'top-title' => array(
+				'type' => 'small',
+				'display' => 'Home page top title',
+			),
+			'top-text' => array(
+				'type' => 'full',
+				'display' => 'Home page top text',
+			),
+			'what-we-do' => array(
+				'type' => 'full',
+				'display' => 'List items for "what we do" (use HTML li markup)',
+			),
+			'dont-do' => array(
+				'type' => 'full',
+				'display' => 'List items for "what we don\'t do" (use HTML li markup)',
+			),
+		),
+	);
+	$services_args = array(
+		'name' => 'services',
+		'fields' => array(
+			'top-title' => array(
+				'type' => 'small',
+				'display' => 'Services page top title',
+			),
+			'top-text' => array(
+				'type' => 'full',
+				'display' => 'Services page top text',
+			),
+		),
+	);
+	$contact_args = array(
+		'name' => 'contact-us',
+		'fields' => array(
+			'text' => array(
+				'type' => 'full',
+				'display' => 'Text for the contact page',
+			),
+		),
+	);
+	if ( $post->post_name == 'services' )
+		logic_department__add_page_meta_box( $services_args );
 
-function logic_department__show_homepage_statement_meta_box() { ?>
-	<label for="homepage-statement-text">Statement:</label><br>
-	<textarea cols="100" rows="20" name="_homepage-statement" id="homepage-statement-text"><?php
-		if ( get_option( 'homepage-statement' ) ) {
-			echo html_entity_decode( get_option('homepage-statement'), ENT_HTML5 );
+	if ( $post->post_name == 'about' )
+		logic_department__add_page_meta_box( $about_args );
+
+	if ( $post->post_name == 'contact-us' )
+		logic_department__add_page_meta_box( $contact_args );
+
+	if ( get_option( 'page_on_front' ) === $post->ID )
+		logic_department__add_page_meta_box( $home_args );
+}
+add_action( 'add_meta_boxes', 'logic_department__add_special_meta_boxes', 5);
+
+function logic_department__add_page_meta_box( $args ) {
+	if ( ! is_array( $args ) || empty( $args ) )
+		return;
+	$template_name = isset( $args['name'] ) ? $args['name'] : '';
+	$fields = isset( $args['fields'] ) ? $args['fields'] : '';	
+	if ( empty( $template_name ) || empty( $fields ) )
+		return;	
+	if ( ! is_array( $fields ) )
+		$fields = array( $fields );
+	
+	$meta_box_markup = '';
+	foreach( $fields as $fieldname => $field ) {
+		$meta_box_markup .= logic_department__meta_box_markup( $template_name, $fieldname, $field );
+	}
+
+	add_meta_box(
+		$template_name . '-meta',
+		ucfirst($template_name) . ' content options',
+		function( $post, $info ) { echo $info['args']['markup']; },
+		'page',
+		'normal',
+		'high',
+		array( 'markup' => $meta_box_markup )
+	);
+}
+
+function logic_department__meta_box_markup( $template_name, $fieldname, $field ) {
+	$type = $field['type'];
+	ob_start();
+	$field_id = esc_attr( $template_name . '-' . $fieldname );
+	$field_option_id = 'ld_' . $field_id;
+	$current_value = stripslashes( html_entity_decode( get_option( $field_option_id ) ) );
+	?>
+	<label for="<?php echo $field_id ?>">
+		<?php echo esc_html( $field['display'] ); ?>:
+	</label><br>
+	<?php
+	if ( $field['type'] == 'full' ) :
+	?>
+		<textarea cols="80" rows="10" name="<?php echo $field_option_id; ?>" id="<?php echo $field_id; ?>"><?php
+			echo $current_value;
+		?></textarea><br>
+	<?php
+	else :
+	?>
+		<input type="text" name="<?php echo $field_option_id; ?>" id="<?php echo $field_id; ?>" value="<?php echo $current_value; ?>"><br>
+	<?php
+	endif;
+	return ob_get_clean();
+}
+
+function logic_department__save_page_option() {
+	foreach( $_POST as $key => $value ) {
+		if ( strpos( $key, 'ld_' ) === 0 ) {
+			$encoded_option = esc_html( $_POST[$key] );
+			update_option( $key, $encoded_option);
 		}
-	?></textarea>
-<?php }
-
-function logic_department__save_homepage_statement() {
-	if ( !empty( $_POST['_homepage-statement'] ) ) {
-		$encoded_statement = esc_html( $_POST['_homepage-statement'] );
-		update_option( 'homepage-statement', $encoded_statement );
-	} else {
-		return;
 	}
 }
-add_action( 'save_post', 'logic_department__save_homepage_statement' );
+add_action( 'save_post', 'logic_department__save_page_option');
+
+function logic_department__echo_option( $option_name ) {
+	$decoded = html_entity_decode( get_option( $option_name ) );
+	$slashes_stripped = stripslashes( $decoded );
+	echo $slashes_stripped;
+}
+function logic_department__modify_case_studies_query( $query ) {
+	if ( !is_admin() && $query->is_main_query() && is_post_type_archive( 'case-study' ) ) {
+		$query->set( 'posts_per_page', '4' );
+		return $query;
+	}
+}
+add_action( 'pre_get_posts', 'logic_department__modify_case_studies_query' );
+
+function load_next_projects_page() {
+	$page_num = $_POST['page_num'];
+	$projects_query = new WP_Query( array(
+		'post_type' => 'case-study',
+		'posts_per_page' => 4,
+		'paged' => $page_num,
+		'post_status' => 'publish',
+	) );
+
+	$projects_markup = array();
+	if ( $projects_query->have_posts() ) :
+		while( $projects_query->have_posts() ) :
+			$projects_query->the_post();
+			ob_start();
+			?>
+			<div class="link-block link-block--case-study flex-row__item" style="background-image: url(<?php echo the_post_thumbnail_url( 'full' ); ?> );">
+				<div class="link-block__inner">
+					<h1 class="link-block__title"><?php echo the_title(); ?></h1>
+					<div class="case-study__hr"></div>
+					<?php 
+					$content = get_the_content();
+					if ( !empty( $content ) ) : ?>
+						<div class="link-block__description"><?php the_content(); ?></div>
+					<?php endif; ?>
+					<a href="<?php echo get_permalink( $post ); ?>"class="link-block__link button-link">View Project</a>
+				</div>
+			</div>
+			<?php
+			$projects_markup[] = ob_get_clean();
+		endwhile;
+		echo json_encode( $projects_markup );
+	else :
+		echo 'done';
+	endif;
+	wp_die();
+}
+add_action( 'wp_ajax_load_next_projects_page', 'load_next_projects_page' );
+add_action( 'wp_ajax_nopriv_load_next_projects_page', 'load_next_projects_page' );
 /**
  * Implement the Custom Header feature.
  */

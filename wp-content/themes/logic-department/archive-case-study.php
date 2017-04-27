@@ -14,20 +14,21 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="projects-top">
-				<h2 class="projects__title">Our Projects</h2>
+				<h2 class="projects__title">
+					<?php echo esc_html( get_theme_mod( 'logic_department__case_studies_title' ) ); ?>
+				</h2>
 				<div class="projects__text">
 					<p>
-						Our clients range from small businesses and non-profits to agencies and large corporations. The case studies below highlight our processes and services. We'll customize our strategy, depending on the specific needs of your project, and work with you to determine the best way forward.
+						<?php echo esc_html( get_theme_mod( 'logic_department__case_studies_description' ) ); ?>
 					</p>
 				</div>
 			</header><!-- .page-header -->
 
 			<div class="page-main projects-container flex-row flex-row--link-blocks">
-				<?php
-				/* Start the Loop */
-				while ( have_posts() ) : the_post();
-					$this_height = rand(1, 3);
-				?>
+			<?php
+			/* Start the Loop */
+			while ( have_posts() ) : the_post();
+			?>
 				<div class="link-block link-block--case-study flex-row__item" style="background-image: url(<?php echo the_post_thumbnail_url( 'full' ); ?> );">
 					<div class="link-block__inner">
 						<h1 class="link-block__title"><?php echo the_title(); ?></h1>
@@ -37,11 +38,12 @@ get_header(); ?>
 						if ( !empty( $content ) ) : ?>
 							<div class="link-block__description"><?php the_content(); ?></div>
 						<?php endif; ?>
-						<a href="<?php echo get_permalink( $post ); ?>"class="link-block__link">View Project</a>
+						<a href="<?php echo get_permalink( $post ); ?>"class="link-block__link button-link">View Project</a>
 					</div>
 				</div>
 			<?php endwhile; ?>
 			</div>
+			<a href="#" class="projects__load-more-link button-link" id="loadMoreProjects">Show More Projects</a>
 			<?php
 		else :
 			get_template_part( 'template-parts/content', 'none' );

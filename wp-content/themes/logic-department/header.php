@@ -33,7 +33,11 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'logic-department' ); ?> <span class="dropdown-arrow">&#9660;</span></button>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<span class="menu-toggle__line"></span>
+				<span class="menu-toggle__line"></span>
+				<span class="menu-toggle__line"></span>
+			</button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'primary-menu' , 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->

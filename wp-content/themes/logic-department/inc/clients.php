@@ -41,7 +41,7 @@ function display_clients() {
 			}
 			?>
 			</div>
-			<a href="#" class="clients__more-link button-link"><span class="more-link__extended">See Our </span>Previous Projects</a>
+			<a href="#" class="clients__more-link button-link button-link--no-border"><span class="more-link__extended">See Our </span>Previous Projects</a>
 		</div>
 	<?php }
 }

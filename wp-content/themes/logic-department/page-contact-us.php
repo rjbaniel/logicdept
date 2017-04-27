@@ -14,12 +14,9 @@ get_header(); ?>
 		<div class="contact-row flex-row">
 		<div class="contact-top flex-row__item">
 			<div class="contact-top__text">
-				<p>
-					We're always available to discuss new projects. Please contact us for further information of work samples.
-				</p>
-				<p>
-					We look forward to hearing from you!
-				</p>
+				<?php
+					logic_department__echo_option( 'ld_contact-us-text' );
+				?>
 			</div>
 			<div class="contact-top__social-media">
 				<a href="<?php echo esc_url( get_theme_mod( 'logic_department__linked_in_link' ) ); ?>" class="contact-social-media__link">

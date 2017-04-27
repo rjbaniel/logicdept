@@ -46,6 +46,23 @@ function logic_department_customize_register( $wp_customize ) {
 			'is_front_page',
 		)
 	) );
+
+	for( $i = 0; $i < 4; $i++ ) {
+		$image_num = $i;
+		$image_num_display = $i + 1;
+		$wp_customize->add_setting( 'logic_department__home-image-' . $image_num, array(
+			'type' => 'theme_mod'
+		) );
+		$wp_customize->add_control( new WP_Customize_Image_Control(
+			$wp_customize,
+			'logic_department__home-image-' . $image_num,
+			array(
+				'label' => esc_html__( 'Upload for position ' . $image_num_display . ' on the homepage' , 'logic-department' ),
+				'section' => 'front-page-options',
+				'logic_department__home-image-' . $image_num,
+			)
+		) );
+	}
 	$wp_customize->add_section( 'front-page-options', array(
 		'title' => esc_html__( 'Front Page Options', 'logic-department' ),
 	) );
