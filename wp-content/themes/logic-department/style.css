@@ -1773,9 +1773,7 @@ a:active {
 	.image-overlay__image {
 		display: block;
 		margin: 0 auto;
-		object-fit: contain;
-		width: 100%;
-		max-height: 90vh;
+		max-height: 80vh;
 	}
 }
 
