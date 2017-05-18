@@ -559,6 +559,11 @@ textarea {
 .header__inner {
 	height: 5.5rem;
 	margin-top: .5rem;
+	transition: .2s all ease-in-out;
+}
+.site-header--scrolled .header__inner {
+	height: 5rem;
+	margin-top: 0;
 }
 .site-title__link,
 .site-title__link:visited,
@@ -584,12 +589,13 @@ textarea {
 	display: inline-block;	
 	padding: .75em 0 .25em;
 	font-weight: bold;
+	border-bottom: .25em solid transparent;
 	transition: .15s all ease-in-out;
 }
 
-.current-menu-item > a,
-.menu-item > a:hover {
-	border-bottom: .25em solid white;
+.primary-menu > .current-menu-item > a,
+.primary-menu > .menu-item > a:hover {
+	border-bottom-color: white;
 }
 .site-branding__logo-link,
 .site-branding__logo-image {
@@ -609,7 +615,7 @@ textarea {
 		height: 6.5rem;
 		width: 100%;
 		padding: 0 1.5rem;
-		transition: height .2s;
+		transition: height .2s ease-in-out;
 	}
 	.site-header--logged-in {
 		top: 32px;
@@ -629,6 +635,7 @@ textarea {
 	.site-branding__logo-link {
 		margin-left: 0;
 		margin-right: 0;
+		transition: width .2s ease-in-out;
 	}
 	.site-header--scrolled .site-branding__logo-link,
 	.site-header--scrolled .site-branding__logo-link {
