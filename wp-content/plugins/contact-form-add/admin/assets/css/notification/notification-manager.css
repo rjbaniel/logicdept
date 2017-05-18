@@ -148,3 +148,12 @@ textarea#emailTemplate {
 #emailRightSidebarCont {
   width: 65%;
 }
+
+.emailNotSendingInfo {
+  top: -90px;
+  font-weight: bold;
+  left: 600px;
+  position: relative;
+  width: 380px;
+  cursor: pointer;
+}

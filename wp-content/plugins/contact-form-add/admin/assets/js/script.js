@@ -69,7 +69,7 @@ smuzform.App.Models.FormSettings = Backbone.Model.extend({
 
 
 
-var Field = Backbone.Model.extend({
+smuzform.App.Models.Field = Backbone.Model.extend({
 
 	validate: function( attr ) {
 
@@ -173,7 +173,7 @@ var Field = Backbone.Model.extend({
 
 var FieldsCollection = Backbone.Collection.extend({
 
-	model: Field,
+	model: smuzform.App.Models.Field,
 	
 	initialize: function() {
 
@@ -1016,7 +1016,7 @@ $(document).ready(function() {
 
 	$('.singleText button').click(function() {
 
-		var TextFieldModel = new Field({
+		var TextFieldModel = new smuzform.App.Models.Field({
 
 			type: 'singletext',
 			label: 'Untitled',
@@ -1035,7 +1035,7 @@ $(document).ready(function() {
 
 	$('.textArea button').click(function() {
 
-		var TextAreaFieldModel = new Field({
+		var TextAreaFieldModel = new smuzform.App.Models.Field({
 
 			type: 'textarea',
 			label: 'Untitled',
@@ -1053,7 +1053,7 @@ $(document).ready(function() {
 
 	$('.radioButtons button').click(function() {
 
-		var RadioFieldModel = new Field({
+		var RadioFieldModel = new smuzform.App.Models.Field({
 
 			type: 'radio',
 			label: 'Untitled',
@@ -1070,7 +1070,7 @@ $(document).ready(function() {
 
 	$('.checkboxes button').click(function() {
 
-		var CheckboxFieldModel = new Field({
+		var CheckboxFieldModel = new smuzform.App.Models.Field({
 
 			type: 'checkbox',
 			label: 'Untitled',
@@ -1087,7 +1087,7 @@ $(document).ready(function() {
 
 	$('.dropdown button').click(function() {
 
-		var SelectFieldModel = new Field({
+		var SelectFieldModel = new smuzform.App.Models.Field({
 
 			type: 'dropdown',
 			label: 'Untitled',
@@ -1104,7 +1104,7 @@ $(document).ready(function() {
 
 	$('.lineBreak button').click(function() {
 
-		var LinebreakFieldModel = new Field({
+		var LinebreakFieldModel = new smuzform.App.Models.Field({
 
 			type: 'linebreak',
 
@@ -1119,7 +1119,7 @@ $(document).ready(function() {
 
 	$('.sectionBreak button').click(function() {
 
-		var SectionbreakFieldModel = new Field({
+		var SectionbreakFieldModel = new smuzform.App.Models.Field({
 
 			type: 'sectionbreak',
 
@@ -1134,7 +1134,7 @@ $(document).ready(function() {
 
 	$('.singleNumber button').click(function() {
 
-		var NumberFieldModel = new Field({
+		var NumberFieldModel = new smuzform.App.Models.Field({
 
 			type: 'number',
 			label: 'Number',
@@ -1151,7 +1151,7 @@ $(document).ready(function() {
 
 	$('.fileUpload button').click(function() {
 
-		var FileUploadFieldModel = new Field({
+		var FileUploadFieldModel = new smuzform.App.Models.Field({
 
 			type: 'fileupload',
 			label: 'Upload File',
@@ -1168,7 +1168,7 @@ $(document).ready(function() {
 
 	$('.name button').click(function() {
 
-		var NameFieldModel = new Field({
+		var NameFieldModel = new smuzform.App.Models.Field({
 
 			type: 'name',
 			label: 'Name',
@@ -1186,7 +1186,7 @@ $(document).ready(function() {
 
 	$('.email button').click(function() {
 
-		var EmailFieldModel = new Field({
+		var EmailFieldModel = new smuzform.App.Models.Field({
 
 			type: 'email',
 			label: 'Email',
@@ -1203,7 +1203,7 @@ $(document).ready(function() {
 
 	$('.website button').click(function() {
 
-		var WebsiteFieldModel = new Field({
+		var WebsiteFieldModel = new smuzform.App.Models.Field({
 
 			type: 'website',
 			label: 'Link',
@@ -1219,7 +1219,7 @@ $(document).ready(function() {
 
 	$('.date button').click(function() {
 
-		var DateFieldModel = new Field({
+		var DateFieldModel = new smuzform.App.Models.Field({
 
 			type: 'date',
 			label: 'Date',
@@ -1239,7 +1239,7 @@ $(document).ready(function() {
 
 	$('.phone button').click(function() {
 
-		var PhoneFieldModel = new Field({
+		var PhoneFieldModel = new smuzform.App.Models.Field({
 
 			type: 'phone',
 			label: 'Phone Number',
@@ -1274,7 +1274,7 @@ $(document).ready(function() {
 
 		};
 
-		var AddressFieldModel = new Field({
+		var AddressFieldModel = new smuzform.App.Models.Field({
 
 			type: 'address',
 			label: 'Address',
@@ -1292,7 +1292,7 @@ $(document).ready(function() {
 
 		var likertData = {};
 
-		var LikertFieldModel = new Field({
+		var LikertFieldModel = new smuzform.App.Models.Field({
 
 			type: 'likert',
  			extraData: likertData,
@@ -1317,7 +1317,7 @@ $(document).ready(function() {
 			bold: false
 		};
 
-		var TextModel =  new Field( {
+		var TextModel =  new smuzform.App.Models.Field( {
 
 			type: 'customText',
 			label: 'Custom Text',
@@ -1338,7 +1338,7 @@ $(document).ready(function() {
 			height: 150
 		};
 
-		var ImageModel =  new Field( {
+		var ImageModel =  new smuzform.App.Models.Field( {
 
 			type: 'customImage',
 			label: 'Custom Image',
@@ -1356,7 +1356,7 @@ $(document).ready(function() {
 			readyHtml: 'Edit Me'
 		};
 
-		var HtmlModel =  new Field( {
+		var HtmlModel =  new smuzform.App.Models.Field( {
 
 			type: 'customHtml',
 			label: 'Custom Html',
@@ -1374,7 +1374,7 @@ $(document).ready(function() {
 			navText: ''
 		};
 
-		var PageBreakModel =  new Field( {
+		var PageBreakModel =  new smuzform.App.Models.Field( {
 			label: 'Page Break',
 			type: 'pagebreak',
 			label: 'Page Break',
@@ -1483,11 +1483,12 @@ $(document).ready(function() {
 				smuzform.App.Collections.FieldsCol.add(field);
 			});
 			
-			smuzform.App.Collections.FieldsCol.on( 'add', function( model ) {
+			/*smuzform.App.Collections.FieldsCol.on( 'add', function( model ) {
 				$('html, body').animate({
 				     scrollTop: $('#saveForm').offset().top - 200   
 				   }, 200);
-			} );
+			} );*/
+
 
 		}).always(function() {
 			
@@ -1521,5 +1522,17 @@ $(document).on( 'submit', '#formSettingsForm', function() {
 	} );
 
 $(document).ready(function(){$('.toplevel_page_smuz-forms-main').addClass('current');})
+
+
+$('#fields .field').not('.smuzlocked').draggable({ 
+	cancel: false, 
+	revert: 'invalid',
+	connectToSortable: '#formFieldsCont',
+	helper: 'clone'
+});
+
+$( '.likert' ).click( function(e) {
+	//alert( 'The feature is in development.' );
+} );
 
 })(jQuery);

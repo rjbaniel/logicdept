@@ -1,5 +1,7 @@
 <style>
 
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&amp;subset=latin-ext");
+
 .wp_smf_heading{
 	font-size: 23px;
     font-weight: 400;
@@ -199,7 +201,7 @@ table tr:hover td{
 }
 
 #forms_page_cont *{
-	font-family: "Open Sans";
+	font-family: "Work Sans";
 }
 </style>
 <div id="forms_page_cont">

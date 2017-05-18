@@ -1199,7 +1199,7 @@ function before_reset() {
       '%d',
     ));
     $new_id = (int)$wpdb->get_var("SELECT MAX(id) FROM " . $wpdb->prefix . "formmaker");
-    update_option('contact_form_forms', ((get_option('contact_form_forms')) ? (get_option('contact_form_forms')) . ',' . $id : $id));
+    update_option('contact_form_forms', ((get_option('contact_form_forms')) ? (get_option('contact_form_forms')) . ',' . $new_id : $new_id));
     $wpdb->insert($wpdb->prefix . 'formmaker_views', array(
       'form_id' => $new_id,
       'views' => 0

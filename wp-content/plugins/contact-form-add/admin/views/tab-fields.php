@@ -4,7 +4,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Single Line Text</button>
+			<button data-btntype="singleText" data-specialbtn="true">Single Line Text</button>
 
 		</div>
 
@@ -14,7 +14,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Number</button>
+			<button data-btntype="singleNumber" data-specialbtn="true">Number</button>
 
 		</div>
 
@@ -24,7 +24,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Textarea</button>
+			<button data-btntype="textarea" data-specialbtn="true">Textarea</button>
 
 		</div>
 
@@ -34,7 +34,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Dropdown</button>
+			<button data-btntype="dropdown" data-specialbtn="true">Dropdown</button>
 
 		</div>
 
@@ -44,7 +44,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Radio Buttons</button>
+			<button data-btntype="radioButtons" data-specialbtn="true">Radio Buttons</button>
 
 		</div>
 
@@ -56,7 +56,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Checkboxes</button>
+			<button data-btntype="checkboxes" data-specialbtn="true">Checkboxes</button>
 
 		</div>
 
@@ -67,7 +67,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Section Break</button>
+			<button  data-btntype="sectionBreak" data-specialbtn="true">Section Break</button>
 
 		</div>
 
@@ -77,7 +77,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Line Break</button>
+			<button data-btntype="lineBreak" data-specialbtn="true">Line Break</button>
 
 		</div>
 
@@ -90,7 +90,7 @@
 
 		<div class="fieldWrap">
 
-			<button>File Upload</button>
+			<button data-btntype="fileUpload" data-specialbtn="true">File Upload</button>
 
 		</div>
 
@@ -100,7 +100,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Name</button>
+			<button data-btntype="name" data-specialbtn="true">Name</button>
 
 		</div>
 
@@ -110,7 +110,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Email</button>
+			<button data-btntype="email" data-specialbtn="true">Email</button>
 
 		</div>
 
@@ -120,7 +120,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Date</button>
+			<button data-btntype="date" data-specialbtn="true">Date</button>
 
 		</div>
 
@@ -130,7 +130,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Address</button>
+			<button  data-btntype="address" data-specialbtn="true">Address</button>
 
 		</div>
 
@@ -140,7 +140,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Phone</button>
+			<button data-btntype="phone" data-specialbtn="true">Phone</button>
 
 		</div>
 
@@ -150,17 +150,17 @@
 
 		<div class="fieldWrap">
 
-			<button>Website</button>
+			<button  data-btntype="Website" data-specialbtn="true">Website</button>
 
 		</div>
 
 	</li>
 
-	<li class="field likert">
+	<li class="field likert smuzlocked">
 
 		<div class="fieldWrap">
 
-			<button>Likert</button>
+			<button data-btntype="likertScale" data-specialbtn="true">Likert</button>
 
 		</div>
 
@@ -170,17 +170,17 @@
 
 		<div class="fieldWrap">
 
-			<button>Page Break</button>
+			<button  data-btntype="pageBreak" data-specialbtn="true">Page Break</button>
 
 		</div>
 
 	</li>
 
-	<li class="field rating likert">
+	<li class="field rating likert smuzlocked">
 
 		<div class="fieldWrap">
 
-			<button>Rating</button>
+			<button data-btntype="rating" data-specialbtn="true">Rating</button>
 
 		</div>
 
@@ -192,7 +192,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Text</button>
+			<button  data-btntype="customText" data-specialbtn="true">Text</button>
 
 		</div>
 
@@ -202,13 +202,13 @@
 
 		<div class="fieldWrap">
 
-			<button>Image</button>
+			<button  data-btntype="customImage" data-specialbtn="true">Image</button>
 
 		</div>
 
 	</li>
 
-	<li class="field likert">
+	<li class="field likert smuzlocked">
 
 		<div class="fieldWrap">
 
@@ -222,7 +222,7 @@
 
 		<div class="fieldWrap">
 
-			<button>Custom HTML</button>
+			<button data-btntype="customHtml" data-specialbtn="true">Custom HTML</button>
 
 		</div>
 

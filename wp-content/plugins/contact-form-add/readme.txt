@@ -1,25 +1,59 @@
-=== Contact Form ===
+=== WordPress Contact Form Builder | Custom Contact Form ===
 Contributors: umarbajwa
 Requires at least: 3.7
-Tested up to: 4.6
-Tags: contact form, form, form creator, form builder, forms, contact form builder, contact form designer, contact forms, form maker, mailchimp forms, mailchimp form
-Stable tag: 1.4
+Tested up to: 4.7 
+Tags:   contact form, form builder,  contact me, custom contact form, form, custom form
+Stable tag: 1.8.1
 Donate Link: http://web-settler.com/form-builder/
 License: GPL V2 or latest
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Contact form plugin saves your hours of precious time by making form creation process super simple and efficient.
+Create Responsive Forms with Contact form builder easily in minutes using drag & drop contact form builder UI.
 
 == Description ==
 
+Create beautiful, responsive forms with a simple drag & drop form editor. Ditch the old shortcode supported contact form 7 and start using Contact form builder which actually improves your contact form usage and speed up the process.
+
 Contact form plugin is easiest way to build any responsive form for your website. No fuss or messing with code create the form you want easily with simple drag & drop form builder.
 
-> <strong> Upgrade to Contact Form Premium </strong>
->
-> If you want support or all AddOns, upgrade to [Contact From Premium](http://web-settler.com/form-builder/) 
+<strong> Upgrade to Contact Form Premium </strong>
+
+If you want support or all AddOns, upgrade to [Contact From Premium](http://web-settler.com/form-builder/) 
 
 
-> [AddOns](http://web-settler.com/form-builder/)  |  [Support](http://web-settler.com/ulp-support/) | [Setup Guide](https://youtu.be/bNww-dVSb44) 
+[AddOns](http://web-settler.com/form-builder/)  |  [Support](http://web-settler.com/ulp-support/) | [Setup Guide](https://youtu.be/bNww-dVSb44) 
+
+https://www.youtube.com/watch?v=CLzTCIKn85M
+
+
+> ### What People Say about us : 
+
+> @major_1012
+> <strong> Easy to set up, easy to customize contact form, support active and helpful </strong>
+> Been using Contact Form 7 on all my sites and customer’s sites, but that is about to change.
+> This contact form is the easiest to customize I have found yet. It is also very responsive.
+> Goodbye Contact Form 7, your days are numbered with me and my clients.
+> Good job guys, keep up the good work!
+
+> @tgbyrd  
+> <strong> Simple yet Satisfying! </strong>
+> Only 2nd review I’ve ever left. Excellent contact form product. Super simple to setup and super useful.
+
+> @marcella-geeroms  
+> <strong> works like a charm! </strong> 
+> Contact form is Easy and works like a charm.
+
+> @opeyemip  
+> <strong> Best Contact form plugin </strong> 
+> I so much love this contact form plugin. So full and useful
+
+> @senseifranks  
+> <strong> It was very easy to install and setup.</strong> 
+> I have little experience using WordPress for my website. I needed a way for people to contact me for classes. I tried several plugins and this was the easiest to use and setup out of what is available for creating contact forms. I would recommend giving this one a try.
+
+
+
+### Have your contact form up and running in 2 minutes.
 
 Contact form plugin's user interface is designed to maximize the time efficiency one spend creating a form, try it and you will know how much easy and efficient this form plugin is.
 
@@ -40,63 +74,64 @@ You can create any type of forms with contact form plugin it was built for multi
 
 ### Features :
 
-* Easy to use, even for beginners
+* Contact form plugin is easy to use, even for beginners
 * Fully responsive contact form looks perfect on all screen sizes and mobile devices.
 * Add or remove additional fields easily and label any contact form fields you want.
 * Make any of the form fields required or not.
 * Receive a copy of the email sent via the contact form.
-* Drag & Drop form builder.
-* Contact form plugin have ready to go fields.
+* Drag & Drop contact form builder.
+* Extensive documentation. 
+* Contact form plugin have ready to go fields just drag and drop to use them.
 * Manage, Edit, and Export form user submissions.
 * Secure forms with advanced security features.
-* All form submitted data is available to sort,filter,analyze or export as CSV or print.
+* All contact form submitted data is available to sort,filter,analyze or export as CSV or print.
 * Ability to View, Edit or delete entries/submissions.
 * Advanced Conditional login for your fields.
-* Redirect users after submission to specified URL.
+* Redirect users after form submission to specified URL.
 * File upload feature for your forms.
-* Field settings section.
+* Contact Form Field settings section.
 * Make fields required or block duplication.
-* Set pre-defined values for fields of your form.
+* Set pre-defined values for fields of your contact form.
 * Notifications - Email notifications for your form submission or select one from AddOns.
 * Various Auto responders supported.
 * Conditional Logic for Email Notifications.
-* Create interactive forms that react to user’s actions.
-* Dynamically show, hide, or change the value of form fields.
-* Add Multiple notifications for one form.
+* Create interactive contact forms that react to user’s actions.
+* Dynamically show, hide, or change the value of contact form fields.
+* Add Multiple notifications for one contact form.
 * Form settings to setup your form.
 * Flexible field types.
-* Insert your form anywhere.
+* Insert your contact form anywhere.
 * Ajax based contact forms.
-* Design your forms.
-* Customizable design.
-
+* Design your contact forms easily.
+* Customizable Contact Form design.
+* Contact form 7 like features
 
 = <a href='http://web-settler.com/form-builder/' > Available AddOns </a> =
 
 = Google Captcha =
 
-Google Captcha Premium AddOn for securing you Forms from spamming and brute forces from the dark side.
+Google Captcha Premium AddOn for securing your contact Forms from spamming and brute force. This is the largest problem a Contact form should solve and take proper measures to prevent spam. Contact form plugin comes by default with a honeypot field and will save alot of your time.
 
 = MailChimp Integration = 
 
-Send your entries to MailChimp or add a simpe check box in your contact form to increase mailchimp subscribers. 
+Sync your contact form submissions with mailchimp and gain more subscribers directly. It is a great tool for people who need to continuously follow back with newsletters and offers for their customer. Contact form plugin solves this problem by adding a simple check box to your contact form, When the visitor selects it you will get a new subscriber as well.
 
 
-= Form Designer = 
+= Contact Form Designer = 
 
-Why add white boring forms when you can add colors .
+Mostly contact form uses the themes styling and some times it is not good enough or you want your contact form for specific needs which require custom styling, Contact form solves this problem by giving you a visual form designer which allows you to design all elements of your contact form. 
 
-= Entries = 
+= Contact Form Entries = 
 
-Contact form stores all form submissions in entries so you can view,edit or delete them. Entries also allow you to export your form submissions.
+Contact form stores all form submissions in Database so you can view,edit or delete them at anytime. Contact form entries also allow you to export your contact form submissions in csv format.
 
 = Export Submissions = 
 
-Contact form plugin integrates with entries system which stores form submissions and allow you to print or export form submissions as CSV file. This format is supported by all CRM services for importing data to their platform.
+Contact form plugin integrates with entries system which stores form submissions and allow you to print or export contact form submissions as CSV file. This format is supported by all CRM services for importing data to their platform.
 
 = Conditional Logic Fields = 
 
-With conditional logic you can add IF-THEN logic for your fields. Enable Conditional logic to a field to show or hide that field based on a previous user selection or input.
+With conditional logic you can add IF-THEN logic for your contact form fields. Enable Conditional logic to a field to show or hide that field based on a previous user selection or input.
 
 = Conditional Logic Notifications = 
 
@@ -110,20 +145,38 @@ Contact form is 100% responsive and mobile friendly contact form plugin is compa
 
 = Notifications = 
 
-Notification section allows you to select notifications for your submission get notified by email or select an AddOn for various email marketing service integrations. Recieve email notifications whenever someone use your contact form.
+Notification section allows you to select notifications for your contact form submissions and get notified by email or select an AddOn for various email marketing service integrations. Receive email notifications whenever someone contact you via contact form.
 
 
-= Drag & Drop  From Builder =
+= Drag & Drop Contact Form Builder =
 
-Contact form plugin integrates with drag and drop form builder which allows you to make and publish your forms in no time.
+Contact form plugin is completely based on drag and drop builder so you don't have to use bulky shortcodes to create your form.
 
-= Multi Page Form =
+You can add your contact form at any place on your website. Whether it be in the content or in the sidebar or homepage. You contact form can be placed where ever you want.
 
-Contact form allows you to create efficient multi page forms. With this feature you can make your contact forms more interactive. 
+= Multi Page Contact Form =
 
-= HTML Elements =
+Contact form allows you to create efficient multi page forms. With this feature you can make your contact forms more interactive and easy. Customers tend use interactive forms 75% more than static ones. 
 
-Contact form plugin give you the ability to add HTML elements like Images, Links, Text etc.. in your contact form. You can also add custom HTML which gives you endless possibilities.
+= HTML Elements For Contact Form =
+
+Contact form plugin give you the ability to add HTML elements like Images, Links, Text etc.. in your contact form. You can also add custom HTML which gives you endless possibilities to design custom forms.
+
+= Super Simple and Easy = 
+
+We have designed the contact form UI easy and efficient so you can create your forms in minutes without wasting any time.
+
+Responsive and Customizable Contact Form. Add a beautiful background image and impress your customers with your contact form.
+
+
+
+Contact form support all field types including the upload file. Redirect after the form submission or simply display a customizable message.
+
+We are working hard to create more extensions for your contact form. If you have any suggestion feel free to send us.
+
+Contact form plugin is the only form plugin you will ever need, It is fast, efficient & modern design. Form plugin is designed for users with zero coding knowledge and contain advanced features like conditional logic.
+
+
 
 
 
@@ -153,11 +206,11 @@ Not so easy way :
 
 = Contact Form Frequently Asked Questions =
 
-= How to create a form ? =
+= How to create a Contact form ? =
 
 A : After activating the contact form plugin go to contact form menu from your dashboard, Click add new button, Now from Add Field tab click on the fields you want to add in your form and save the form. Go to export to get the shortcode to display the contact form on your website.
 
-= How to display Form ? =
+= How to display Contact Form ? =
 
 A: After saving the form you created go to export copy the shortcode and paste it in place where you want to display the contact form.
 
@@ -180,15 +233,15 @@ A: To receive the email notification when someone submits the form.
 
 = What is conditional logic ? = 
 
-A: Conditional logic is the logic built for form plugin which on specific action performs a pre defined task. With conditional logic you can add IF-THEN logic for your fields. Enable Conditional logic to a field to show or hide that field based on a previous user selection or input. (For Example if you set conditional logic for email field so when a user enter their email and if he had already sent a request through your form you can identify and show him that his previous request is being processed.)
+A: Conditional logic is the logic built for contact form plugin which on specific action performs a pre defined task. With conditional logic you can add IF-THEN logic for your contact form fields. Enable Conditional logic to a field to show or hide that field based on a previous user selection or input. (For Example if you set conditional logic for email field so when a user enter their email and if he had already sent a request through your form you can identify and show him that his previous request is being processed.)
 
 = How can I view the form submission ? =
 
-A: You can view the form submissions from Entries. 
+A: You can view the contact form submissions from Entries. You can also export and delete individual contact form entries. Contact Form entries are saved in database. 
 
-= Can I edit existing Form entries ? =
+= Can I edit existing Contact Form entries ? =
 
-A: Yes, You can edit your entries from entry manager.
+A: Yes, You can edit your Contact Form entries from entry manager.
 
 
 == Screenshots ==
@@ -207,10 +260,21 @@ A: Yes, You can edit your entries from entry manager.
 
 == Changelog ==
 
+= 1.8 = 
+
+* Added drag and drop in contact form editing panel.
+* Bug Fixes.
+
+= 1.5 =
+
+* Notification email fixed
+
+
 = 1.2 =
 * Form Styler loaded with new features.
 * Plugin core changes.
 * AddOn added.
+
 
 = 1.0.1 =
 * Name field changes.
@@ -232,11 +296,19 @@ Contact form plugin give you the ability to apply conditional logic for your not
 
 == Upgrade Notice ==
 
-= 1.3 =
-* 
+= 1.8 = 
+
+* Added drag and drop in contact form editing panel.
+* Bug Fixes.
+
+= 1.6 =
+
+* Contact form Notification email bug fixed
+
+
 
 = 1.2 =
-* Form Styler loaded with new features.
+* Contact Form Styler loaded with new features.
 * Plugin core changes.
 * AddOn added.
 

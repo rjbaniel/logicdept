@@ -1,29 +1,36 @@
-=== Contact Form ===
+=== Contact Form by WD - responsive drag & drop contact form builder tool ===
 Contributors: webdorado
 Donate link: http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html
-Tags:  captcha, contact, contact form, contact forms, custom form, email, feedback, form, form builder, form manager, forms, survey
+Tags:  contact, contact form, email, forms, contact forms, custom form, feedback, form builder, form manager, form maker, forms builder, form builder wordpress
 Requires at least: 3.4
-Tested up to: 4.6
-Stable tag: 1.8.35
+Tested up to: 4.7
+Stable tag: 1.8.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Form plugin is a simple contact form builder tool, which allows the user to create and edit different type of contact forms.   
+Contact Form by WD plugin is a simple contact form builder tool, which allows the user to create and edit different types of contact forms.   
 
 == Description ==
 Create simple contact forms or complex applications forms with this FREE and intuitive WordPress plugin. No coding knowledge is required.   
   
 [WordPress Contact Form Maker](http://web-dorado.com/products/wordpress-contact-form-maker-plugin.html)   
  
-WordPress Contact Form Maker is a simple contact form builder, which allows the user with almost no knowledge of programming to create and edit different type of contact forms. The product is similar to the WordPress Form Maker using most of its functionality, whereas there are also some differences. If want to build complicated contact forms with various field types like Date, Time, Single choice, Multiple choice, etc., than you can use [WordPress Form Builder](http://wordpress.org/extend/plugins/form-maker).  
+WordPress Contact Form Maker is a simple contact form creator, which allows the user with almost no knowledge of programming to create and edit different type of responsive forms. The product is similar to the WordPress Form Maker using most of its functionality, whereas there are also some differences. If want to build complicated contact forms with various field types like Date, Time, Single choice, Multiple choice, etc., than you can use [WordPress Form Builder](http://wordpress.org/extend/plugins/form-maker).  
 
-The number of fields for the Contact Form Maker is unlimited and having large amount of fields will not cause any malfunctioning of the contact form. You can add different types of contact form fields, including inputs (e.g. e-mail, password, textarea, text input and etc.), Captcha (as well as possibility of adding Google standard ReCaptcha), custom and standard buttons, as well as Map field.  
+The number of fields for the WordPress forms builder plugin is unlimited and having large amount of fields will not cause any malfunctioning of the contact form. You can add different types of contact form fields, including inputs (e.g. e-mail, password, text area, text input and etc.), Captcha (as well as possibility of adding Google standard ReCaptcha), custom and standard buttons, as well as Map field.  
 
-WordPress Contact Form Maker uses simple and easy to manage backend interface, thus the users which are not able to make code-level changes, will be able to make customization and changes using parameters.  
+The WordPress free form builder  uses simple and easy to manage backend interface, thus the users who are not able to make code-level changes, will be able to make customization and changes using parameters. The drag and drop form builder allows you to choose from a number of form options to get just the form you need. From simple one line form to a more complex email form for the site or conditional mailing form - the free responsive form builder is a perfect solution for every website. 
 
-This contact form builder will be equally fit the needs of the novice and experienced developers and designers.  
+The dynamic web form builder allows you to view and manage all form submissions. The WP form plugin stores submissions in your database for future reference.
+
+This contact form builder will equally fit the needs of the novice and experienced developers and designers.  
 
 The product has cross-browser compatibility, which allows using the Contact form for with any browser.  
+
+Contact Form Maker WordPress plugin comes with pre-built templates, but in case you need custom forms, feel free to create your own advanced forms. The form creation process with the plugin is quick and easy.
+
+Contact form plugin is a must have free form builder for any website. It allows you to share contact info like address, email, phone, etc., but also allows you to add email forms, making it possible for your users to leave their feedback and comments directly through email submit forms. Try contact form plugin today and create web forms free and easy today!
+
 ###IMPORTANT: If you think you found a bug in the Contact Form Maker or have any problem or question concerning Contact Form Maker, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).  
 
 
@@ -38,10 +45,11 @@ The product has cross-browser compatibility, which allows using the Contact form
 	*   Section break  
 	*   Map  
 	*   Button  
-*   Possibility to add Custom HTML between the fields . 
+*   Possibility to add Custom HTML between the fields. 
+*   Possibility to re-order fields with drag and drop forms functionality.
 *   Pagination.  
 *   Support for section break.  
-*   Possibility of add custom CSS and Javascript.  
+*   Possibility of add custom CSS and Javascript to create custom contact forms.  
 *   Additional attributes for each field to add certain properties using Java Script.  
 *   Submissions are send to the provided admin address(es) and submitter (optional).  
 *   Custom text for admin and users  
@@ -51,9 +59,12 @@ The product has cross-browser compatibility, which allows using the Contact form
 *   Data validation before the submission of the contact form.  
 *   Detailed Submissions field including the submissions of all contact forms.  
 *   10 built-in templates.  
+*   Intuitive form editor.
 *   Required and hidden fields for advanced contact forms.  
 *   Conditional fields
 
+
+Please note that if you’re looking to add more complex, custom online forms, like Stripe form, PayPal form, online application form, order forms, as well as other online custom forms, you can use the Form Maker plugin, which is a more advanced form builder tool. 
 
 ### Supported languages Of the Contact Form Maker  
 
@@ -107,6 +118,7 @@ Turkish (tr_TR)
 Ukrainian (uk_UA)  
 Vietnamese (vi)  
 
+
 == Installation ==    
 
 ####Thank you for your interest in [WordPress Contact Form](http://wordpress.org/plugins/contact-form-maker/).  
@@ -145,6 +157,31 @@ If you want to update the plugin while preserving your existing contact forms, y
 8.  Contact Form Maker - Select Columns  
 
 == Changelog ==
+
+= 1.8.41 =
+* Changed: Improved captcha security   
+* Fixed:Bug On email field   
+
+= 1.8.40 =
+* Fixed: bug on "Save as Copy"   
+* Fixed: Line breaks in textarea after incorrect captcha   
+* Changed: Submissions page: display labels on buttons   
+* Changed: When the Pro version is installed, display a notification about automatically disabling Free version   
+
+= 1.8.39 =
+* Fixed: Bug with Hidden field in custom text in Email   
+* Fixed: Bug on email verification custom post   
+* Changed: Filters now apply to CSV and XML export   
+
+= 1.8.38 =
+* Fixed: Bug On Search by ID in Submissions   
+* Added: Mailchimp in featured plugins   
+
+= 1.8.37 =
+* Fixed: Bug on edit_old() function for old forms.   
+
+= 1.8.36 =
+* Changed: Featured Themes page   
 
 = 1.8.35 =
 * Fixed: Update from very old version   

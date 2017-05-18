@@ -1438,39 +1438,54 @@ class FMViewManage_fmc {
       </div>
     <form class="wrap" id="manage_form" method="post" action="admin.php?page=manage_fmc" style="width:99%;">
       <?php wp_nonce_field('nonce_fmc', 'nonce_fmc'); ?>
-      <h2><?php echo $page_title; ?></h2>
-      <div style="float: right; margin: 0 5px 0 0;">
-        <a href="<?php echo add_query_arg(array('action' => 'FormMakerPreview_fmc', 'id' => $row->theme, 'width' => '1000', 'height' => '500', 'TB_iframe' => '1'), admin_url('admin-ajax.php')); ?>" class="button-primary thickbox thickbox-preview" id="preview_form" title="Form Preview" onclick="return false;">
-          Preview
-        </a>
-        <input class="button-primary" type="submit" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'form_options_old');" value="Form options"/>
-        <?php
-        if ($id) {
-          ?>
-          <input class="button-secondary" type="submit" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'save_as_copy_old')" value="Save as Copy"/>
-          <?php
-        }
-        ?>
-        <input class="button-secondary" type="submit" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'save_old')" value="Save"/>
-        <input class="button-secondary" type="submit" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'apply_old')" value="Apply"/>
-        <input class="button-secondary" type="submit" onclick="fm_set_input_value('task', 'cancel')" value="Cancel"/>
-      </div>
-
-      <div class="formmaker_table" width="100%">
-        <div style="float: left; text-align: center;"><br />
-          <img src="<?php echo WD_FMC_URL . '/images/FormMaker.png?ver='. get_option("wd_form_maker_version"); ?>" /><br /><br />
-          <img src="<?php echo WD_FMC_URL . '/images/logo.png?ver='. get_option("wd_form_maker_version"); ?>" />
-        </div>
-        <div style="float:right">
-          <span style="font-size: 16.76pt; font-family: tahoma; color: #FFFFFF; vertical-align: middle;">Form title:&nbsp;&nbsp;</span>
-          <input id="title" name="title" class="form_maker_title" value="<?php echo $row->title; ?>"/>
-          <br />
-          <img src="<?php echo WD_FMC_URL . '/images/formoptions.png'; ?>" onclick="if (fm_check_required('title', 'Form title')) {return false;}; submitbutton(); fm_set_input_value('task', 'form_options_old'); fm_form_submit(event, 'manage_form');" style="cursor: pointer; margin: 10px 0 10px 10px; float: right;"/>
-          <br /><br /><br />
-          <img src="<?php echo WD_FMC_URL . '/images/addanewfield.png'; ?>" onclick="enable(); Enable();" style="cursor: pointer; margin:10px 0 10px 10px; float: right;"/>
-        </div>
-      </div>
-
+	  <div class="fm-page-header">
+			<!-- <div class="fm-page-title">
+				<?php echo $page_title; ?>
+			</div> -->
+			<div style="float:left;">
+				<div class="fm-logo-edit-page"></div>
+				<div class="fm-title-edit-page">Form</br>Maker</div>
+			</div>
+			<div class="fm-page-actions">
+				<button class="fm-button form-options-button medium" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'form_options_old');">
+					<span></span>
+					Form Options
+				</button>
+				<div style="height:40px; border-right: 1px solid #848484; display: inline-block; width: 5px; vertical-align: bottom; margin-right: 5px;"></div>				
+				<?php if ($id) { ?>
+					<button class="fm-button save-as-copy-button medium" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'save_as_copy_old');">
+						<span></span>
+						Save as Copy
+					</button>
+				<?php } ?>
+				<button class="fm-button save-button small" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'save_old');">
+					<span></span>
+					Save
+				</button>
+				<button class="fm-button apply-button small" onclick="if (fm_check_required('title', 'Form title') || !submitbutton()) {return false;}; fm_set_input_value('task', 'apply_old');">
+					<span></span>
+					Apply
+				</button>
+				<button class="fm-button cancel-button small" onclick="fm_set_input_value('task', 'cancel');">
+					<span></span>
+					Cancel
+				</button>
+			</div>
+			<div class="fm-clear"></div>
+		</div>
+		<div class="fm-theme-banner">
+			<div style="float:left;">
+				<span style="">Form title:&nbsp;</span>
+				<input id="title" name="title" value="<?php echo $row->title; ?>"/>
+			</div>
+			<div style="float:right;">
+				<button class="fm-button add-new-button large" onclick="enable(); Enable(); return false;">
+					Add a New Field
+					<span></span>
+				</button>
+			</div>	
+		</div>	
+		<div class="fm-clear"></div>
 		<div id="formMakerDiv" onclick="close_window()"></div>
 		<div id="formMakerDiv1" style="padding-top: 20px;" align="center">
 			<table border="0" width="100%" cellpadding="0" cellspacing="0" height="100%" class="formMakerDiv1_table">
@@ -1554,8 +1569,14 @@ class FMViewManage_fmc {
                           <input type="radio" value="before" name="el_pos" id="pos_before" onclick="Enable()"/>
                           Before
                           <select style="width: 100px; margin-left: 5px;" id="sel_el_pos" disabled="disabled"></select>
-                          <img alt="ADD" title="add" style="cursor:pointer; vertical-align:middle; margin:5px" src="<?php echo WD_FMC_URL . '/images/save.png'; ?>" onClick="add(0, false)"/>
-                          <img alt="CANCEL" title="cancel" style="cursor: pointer; vertical-align:middle; margin:5px" src="<?php echo WD_FMC_URL . '/images/cancel_but.png'; ?>" onClick="close_window()"/>
+						  <button class="fm-button field-save-button small" onclick="add(0, false); return false;">
+							Save
+							<span></span>
+						</button>
+						<button class="fm-button cancel-button small" onclick="close_window(); return false;">
+							Cancel
+							<span></span>
+						</button>
                           <hr style=" margin-bottom:10px" />
                         </td>
                       </tr>

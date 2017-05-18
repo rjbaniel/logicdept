@@ -1278,7 +1278,7 @@ class FMViewForm_maker_fmc {
               if($required) {
                 $rep.='<span class="wdform-required">'.$required_sym.'</span>';
               }
-              $rep.='</div><div class="wdform-element-section '.$param['w_class'].'" style="'.$param['w_field_label_pos2'].' width: '.$param['w_size_w'].'px"><textarea class="'.$input_active.'" id="wdform_'.$id1.'_element'.$form_id.'" name="wdform_'.$id1.'_element'.$form_id.'" title="'.$param['w_title'].'"  style="width: 100%; height: '.$param['w_size_h'].'px;" '.$param['attributes'].'>'.$param['w_first_val'].'</textarea></div></div>';
+              $rep.='</div><div class="wdform-element-section '.$param['w_class'].'" style="'.$param['w_field_label_pos2'].' width: '.$param['w_size_w'].'px"><textarea class="'.$input_active.'" id="wdform_'.$id1.'_element'.$form_id.'" name="wdform_'.$id1.'_element'.$form_id.'" title="'.$param['w_title'].'"  style="width: 100%; height: '.$param['w_size_h'].'px;" '.$param['attributes'].'>'.str_replace(array("\r\n", "\n\r", "\n", "\r"), "&#13;", $param['w_first_val']).'</textarea></div></div>';
              
               if($required) {
                 $check_js.='
@@ -1720,7 +1720,7 @@ class FMViewForm_maker_fmc {
               if(x.find(jQuery("div[wdid='.$id1.']")).length != 0 && x.find(jQuery("div[wdid='.$id1.']")).css("display") != "none")
               {
               
-              if(jQuery("#wdform_'.$id1.'_element'.$form_id.'").val()!="" && jQuery("#wdform_'.$id1.'_element'.$form_id.'").val().search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1 )
+              if(jQuery("#wdform_'.$id1.'_element'.$form_id.'").val()!="" && jQuery.trim(jQuery("#wdform_'.$id1.'_element'.$form_id.'").val()).search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1 )
                 {
                   alert("' . addslashes(__("This is not a valid email address.", 'form_maker')) . '");
                   old_bg=x.find(jQuery("div[wdid='.$id1.']")).css("background-color");

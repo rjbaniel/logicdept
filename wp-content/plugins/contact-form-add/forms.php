@@ -2,16 +2,18 @@
 /**
 Plugin Name: Contact Form Add
 Description: Most beautiful WordPress form builder plugin. A plugin you'll love creating forms.
-Author: umarbajwa
+Author: Web-Settler
 Author URI: http://web-settler.com/form-builder/
 Plugin URI: http://web-settler.com/form-builder/
-Version: 1.4
+Version: 1.8.1
 License: GPL V2+
 **/
 
 require plugin_dir_path( __FILE__ ) . 'config.php';
 
 require plugin_dir_path( __FILE__ ) . 'core_functions.php';
+
+require plugin_dir_path( __FILE__ ) . '/admin/Ask-Rev.php';
 
 /**
 Store the first installed version of the plugin in database.
@@ -75,4 +77,3 @@ Executes WordPress action hooks attached to smuzform_loaded
 Hook to this function using the plugins_loaded hook.
 **/
 smuzform_loaded();
-

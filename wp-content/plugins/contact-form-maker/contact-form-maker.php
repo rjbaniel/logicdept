@@ -3,7 +3,7 @@
  * Plugin Name: Contact Form Maker
  * Plugin URI: http://web-dorado.com/products/form-maker-wordpress.html
  * Description: WordPress Contact Form Maker is a simple contact form builder, which allows the user with almost no knowledge of programming to create and edit different type of contact forms.
- * Version: 1.8.35
+ * Version: 1.8.41
  * Author: WebDorado
  * Author URI: http://web-dorado.com/
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
@@ -176,6 +176,7 @@ function form_maker_admin_ajax_cfm() {
   <script>
     var form_maker_admin_ajax_cfm = '<?php echo add_query_arg(array('action' => 'formcontactwindow'), admin_url('admin-ajax.php')); ?>';
     var plugin_url = '<?php echo WD_FMC_URL; ?>';
+    var fmc_plugin_url = '<?php echo WD_FMC_URL; ?>';
 	var admin_url = '<?php echo admin_url('admin.php'); ?>';
   </script>
   <?php
@@ -206,7 +207,7 @@ add_shortcode('email_verification', 'fmc_email_verification_shortcode');
 function fmc_email_verification_shortcode() {
 	require_once(WD_FMC_DIR . '/framework/WDW_FMC_Library.php');
 	require_once(WD_FMC_DIR . '/frontend/controllers/FMControllerVerify_email_fmc.php');
-    $controller_class = 'FMontrollerVerify_email_fmc';
+    $controller_class = 'FMControllerVerify_email_fmc';
     $controller = new $controller_class();
     $controller->execute();
 }
@@ -245,12 +246,26 @@ function register_fmcemailverification_cpt(){
 	}
 }
 
+function sample_admin_notice__success() {
+	echo '<style>div#message.updated{ display: none; }</style>';
+	?>
+	<div class="error notice-success is-dismissible">
+		<p><?php _e( "Contact Form Maker was deactivated because You have Form Maker Pro installed. Form Maker Pro includes all the functionality of Contact Form Maker and much more. Don't worry, you can still use and manage your old Contact Forms from Form Maker.", 'sample-text-domain' ); ?></p>
+	</div>
+	<?php
+}
+
 // Activate plugin.
 function form_maker_activate_cfm() {
+	if(is_plugin_active("form-maker/form-maker.php")){
+		add_action( 'admin_notices', 'sample_admin_notice__success' );		
+		return false;
+	}
   $version = get_option("wd_form_maker_version");
-  $new_version = '1.8.35';
+  $new_version = '1.8.41';
   global $wpdb;
   if (!$version) {
+
 	add_option("wd_form_maker_version", $new_version, '', 'no');
 	if ($wpdb->get_var("SHOW TABLES LIKE '" . $wpdb->prefix . "formmaker'") == $wpdb->prefix . "formmaker") {
 		$recaptcha_keys = $wpdb->get_row('SELECT `public_key`, `private_key` FROM ' . $wpdb->prefix . 'formmaker WHERE public_key!="" and private_key!=""', ARRAY_A);
@@ -267,22 +282,17 @@ function form_maker_activate_cfm() {
       contact_form_maker_update('');
     }
     else {
-	
       require_once WD_FMC_DIR . "/contact_form_maker_insert.php";
       contact_from_maker_insert();
 	  add_option("wd_cfield_limit", '9', '', 'no');
+		add_option('fmc_settings', array('public_key' => '', 'private_key' => '', 'csv_delimiter' => ','));
 	  $cf_email_verification_post = array(
 		  'post_title'    => 'Email Verification',
 		  'post_content'  => '[email_verification]',
 		  'post_status'   => 'publish',
 		  'post_author'   => 1,
-		  'post_type'   => 'fmemailverification',
+		  'post_type'   => 'cfmemailverification',
 		);
-		
-		
-	add_option('fmc_settings', array('public_key' => '', 'private_key' => '', 'csv_delimiter' => ','));
-		
-		
 	  $cf_mail_verification_post_id = wp_insert_post( $cf_email_verification_post );
 	  $wpdb->update($wpdb->prefix . "formmaker", array(
         'mail_verification_post_id' => $cf_mail_verification_post_id,
@@ -292,16 +302,46 @@ function form_maker_activate_cfm() {
     }
   }
   elseif (version_compare($version, $new_version, '<')) {
-   require_once WD_FMC_DIR . "/contact_form_maker_update.php";
-    contact_form_maker_update($version);
-    update_option("wd_form_maker_version", $new_version);
-	$recaptcha_keys = $wpdb->get_row('SELECT `public_key`, `private_key` FROM ' . $wpdb->prefix . 'formmaker WHERE public_key!="" and private_key!=""', ARRAY_A);
-	$public_key = isset($recaptcha_keys['public_key']) ? $recaptcha_keys['public_key'] : '';
-	$private_key = isset($recaptcha_keys['private_key']) ? $recaptcha_keys['private_key'] : '';
-	
-	if (FALSE === $fmc_settings = get_option('fmc_settings')) {
-		add_option('fmc_settings', array('public_key' => $public_key, 'private_key' => $private_key, 'csv_delimiter' => ','));	
-	}
+		require_once WD_FMC_DIR . "/contact_form_maker_update.php";
+		
+		$mail_verification_post_ids = $wpdb->get_results($wpdb->prepare('SELECT mail_verification_post_id FROM ' . $wpdb->prefix . 'formmaker WHERE mail_verification_post_id!="%d"',0));
+		if($mail_verification_post_ids){
+			foreach($mail_verification_post_ids as $mail_verification_post_id) {
+				 $update_email_ver_post_type = array(
+				  'ID'           => (int)$mail_verification_post_id->mail_verification_post_id,
+				  'post_type'   => 'cfmemailverification',
+				);
+
+				wp_update_post( $update_email_ver_post_type ); 
+			}
+		}
+		else{
+			$email_verification_post = array(
+				'post_title'    => 'Email Verification',
+				'post_content'  => '[email_verification]',
+				'post_status'   => 'publish',
+				'post_author'   => 1,
+				'post_type'   => 'cfmemailverification',
+			);
+			$mail_verification_post_id = wp_insert_post( $email_verification_post );
+		
+			add_option('fm_settings', array('public_key' => '', 'private_key' => '', 'csv_delimiter' => ',', 'map_key' => ''));
+			$wpdb->update($wpdb->prefix . "formmaker", array(
+				'mail_verification_post_id' => $mail_verification_post_id,
+			), array('id' => 1), array(
+				'%d',
+			), array('%d'));
+		}
+		
+		contact_form_maker_update($version);
+		update_option("wd_form_maker_version", $new_version);
+		$recaptcha_keys = $wpdb->get_row('SELECT `public_key`, `private_key` FROM ' . $wpdb->prefix . 'formmaker WHERE public_key!="" and private_key!=""', ARRAY_A);
+		$public_key = isset($recaptcha_keys['public_key']) ? $recaptcha_keys['public_key'] : '';
+		$private_key = isset($recaptcha_keys['private_key']) ? $recaptcha_keys['private_key'] : '';
+		
+		if (FALSE === $fmc_settings = get_option('fmc_settings')) {
+			add_option('fmc_settings', array('public_key' => $public_key, 'private_key' => $private_key, 'csv_delimiter' => ','));	
+		}
   }
   
   require_once WD_FMC_DIR . "/contact_form_maker_insert.php";

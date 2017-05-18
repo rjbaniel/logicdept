@@ -38,6 +38,7 @@ class  FMViewSubmissions_fmc {
 		$rows = ((isset($labels_parameters[5])) ? $labels_parameters[5] : NULL);
 		$group_ids = ((isset($labels_parameters[6])) ? $labels_parameters[6] : NULL);
 		$where_choices = $labels_parameters[7];	
+		$searched_ids = $labels_parameters[8] ? implode(',', $labels_parameters[8]) : '';	
 		$order_by = (isset($_POST['order_by']) ? esc_html(stripslashes($_POST['order_by'])) : 'group_id');
 		$asc_or_desc = ((isset($_POST['asc_or_desc']) && $_POST['asc_or_desc'] == 'asc') ? 'asc' : 'desc');
 		$style_id = $this->model->hide_or_not($lists['hide_label_list'], '@submitid@'); 
@@ -85,6 +86,7 @@ class  FMViewSubmissions_fmc {
 			jQuery.ajax({
 			    type: "POST",  
 				url:"<?php echo add_query_arg(array('form_id' => $form_id, 'send_header' => 0), admin_url('admin-ajax.php')); ?>&action=generete_"+type+"_fmc&limitstart="+limit,
+				data: {search_labels : '<?php echo $searched_ids; ?>'},
 				beforeSend: function() {
 					if(<?php echo $subs_count; ?> >= 1000 )
 						jQuery('.fm_modal').show();
@@ -340,14 +342,19 @@ class  FMViewSubmissions_fmc {
 				</div>
 				<div class="tablenav top">
 					<div class="fm-filters">
-						<div class="fm-search-tools">
+						<div class="fm-search-tools fm-page-actions" style="float:left !important;">
 							<input type="hidden" name="hide_label_list" value="<?php echo $lists['hide_label_list']; ?>"> 
-							<button class="fm-icon show-filter-icon" onclick="show_hide_filter(); return false;" title="Show Filters">
+							<button class="fm-button show-filter-button medium" onclick="show_hide_filter(); return false;" title="Show Filters">
 								<span></span>
+								Show Filters
 							</button>
-							<button class="fm-icon search-icon" onclick="fm_form_submit(event, 'admin_form'); return false;" title="Search">
+							<button class="fm-button search-button small" onclick="fm_form_submit(event, 'admin_form'); return false;" title="Search">
+								<span></span>
+								Search
 							</button>
-							<button class="fm-icon reset-icon" onclick="remove_all(); fm_form_submit(event, 'admin_form'); return false;" title="Reset">
+							<button class="fm-button reset-button small" onclick="remove_all(); fm_form_submit(event, 'admin_form'); return false;" title="Reset">
+								<span></span>
+								Reset
 							</button>
 						</div>
 						<div class="fm-add-remove">
@@ -355,7 +362,8 @@ class  FMViewSubmissions_fmc {
 							<button class="fm-button" onclick="toggleChBDiv(true); return false;">
 								Add/Remove Columns
 							</button>
-							<?php WDW_FMC_Library::html_page_nav($lists['total'], $lists['limit'], 'admin_form'); ?>
+							<?php 
+							WDW_FMC_Library::html_page_nav($lists['total'], $lists['limit'], 'admin_form'); ?>
 							<?php } ?>
 							<input type="hidden" name="pagination_clicked" id="pagination_clicked" value=""/>
 						</div>

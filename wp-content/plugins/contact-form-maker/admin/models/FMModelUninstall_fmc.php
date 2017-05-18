@@ -16,7 +16,7 @@ class FMModelUninstall_fmc {
   public function __construct() {
   }
   ////////////////////////////////////////////////////////////////////////////////////////
-  // Public Methods                                                                     //
+  // Public Methods                                                                   //
   ////////////////////////////////////////////////////////////////////////////////////////
   public function delete_db_tables() {
     global $wpdb;

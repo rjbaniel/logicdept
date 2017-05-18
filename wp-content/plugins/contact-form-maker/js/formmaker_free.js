@@ -26508,7 +26508,12 @@ function edit(id) {
 				w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title];
 				s=document.getElementById(id+"_element_lastform_id_temp").style.width;
 				w_size=s.substring(0,s.length-2);
+				
+				if(document.getElementById(id+"_mini_label_area_code"))
 				w_mini_labels= [document.getElementById(id+"_mini_label_area_code").innerHTML, document.getElementById(id+"_mini_label_phone_number").innerHTML];
+				else
+				w_mini_labels= ['Area Code', 'Phone Number'];
+				
 				atrs=return_attributes(id+'_element_firstform_id_temp');
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
@@ -26541,7 +26546,18 @@ function edit(id) {
 				else
 				w_mini_middle = "Middle";
 				
-				w_mini_labels = [w_mini_title, document.getElementById(id+"_mini_label_first").innerHTML,document.getElementById(id+"_mini_label_last").innerHTML, w_mini_middle];
+				if(document.getElementById(id+"_mini_label_first"))
+				w_mini_first = document.getElementById(id+"_mini_label_first").innerHTML;
+				else
+				w_mini_first = "First";
+				
+				if(document.getElementById(id+"_mini_label_last"))
+				w_mini_last = document.getElementById(id+"_mini_label_last").innerHTML;
+				else
+				w_mini_last = "Last";
+				
+				w_mini_labels = [w_mini_title, w_mini_first,w_mini_last, w_mini_middle];
+				
 				s=document.getElementById(id+"_element_firstform_id_temp").style.width;
 				w_size=s.substring(0,s.length-2);
 				atrs=return_attributes(id+'_element_firstform_id_temp');
@@ -26549,7 +26565,7 @@ function edit(id) {
 				w_attr_value=atrs[1];
 				type_name(id, w_field_label, w_field_label_pos,w_first_val, w_title, w_mini_labels, w_size, w_name_format, w_required, w_unique, w_class, w_attr_name, w_attr_value); break;
 			}
-      case 'type_paypal_price': {
+			 case 'type_paypal_price': {
 				w_first_val = [document.getElementById(id+"_element_dollarsform_id_temp").value, document.getElementById(id+"_element_centsform_id_temp").value];
 				w_title = [document.getElementById(id+"_element_dollarsform_id_temp").title, document.getElementById(id+"_element_centsform_id_temp").title];
 				if (document.getElementById(id+"_td_name_cents").style.display=="none") {
@@ -26572,75 +26588,79 @@ function edit(id) {
 			{
 				s=document.getElementById(id+"_div_address").style.width;
 				w_size=s.substring(0,s.length-2);
-        if(document.getElementById(id+"_mini_label_street1")) {
-					w_street1= document.getElementById(id+"_mini_label_street1").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_street1form_id_temp")) {
-            w_street1 = document.getElementById(id+"_street1form_id_temp").value;
-          }
-          else {
-            w_street1 = '';
-          }
-        }
-				if (document.getElementById(id+"_mini_label_street2")) {
-					w_street2= document.getElementById(id+"_mini_label_street2").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_street2form_id_temp")) {
-            w_street2 = document.getElementById(id+"_street2form_id_temp").value;
-          }
-          else {
-            w_street2 = '';
-          }
-        }
-					
-				if (document.getElementById(id+"_mini_label_city")) {
-					w_city= document.getElementById(id+"_mini_label_city").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_cityform_id_temp")) {
-            w_city = document.getElementById(id+"_cityform_id_temp").value;
-          }
-          else {
-            w_city = '';
-          }
-        }
+				
+				
+			if(document.getElementById(id+"_disable_fieldsform_id_temp"))
+			{	
+				if(document.getElementById(id+"_mini_label_street1")) {
+							w_street1= document.getElementById(id+"_mini_label_street1").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_street1form_id_temp")) {
+					w_street1 = document.getElementById(id+"_street1form_id_temp").value;
+				  }
+				  else {
+					w_street1 = '';
+				  }
+				}
+						if (document.getElementById(id+"_mini_label_street2")) {
+							w_street2= document.getElementById(id+"_mini_label_street2").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_street2form_id_temp")) {
+					w_street2 = document.getElementById(id+"_street2form_id_temp").value;
+				  }
+				  else {
+					w_street2 = '';
+				  }
+				}
+							
+						if (document.getElementById(id+"_mini_label_city")) {
+							w_city= document.getElementById(id+"_mini_label_city").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_cityform_id_temp")) {
+					w_city = document.getElementById(id+"_cityform_id_temp").value;
+				  }
+				  else {
+					w_city = '';
+				  }
+				}
 
-				if (document.getElementById(id+"_mini_label_state")) {
-					w_state= document.getElementById(id+"_mini_label_state").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_stateform_id_temp")) {
-            w_state = document.getElementById(id+"_stateform_id_temp").value;
-          }
-          else {
-            w_state = '';
-          }
-        }
-				if (document.getElementById(id+"_mini_label_postal")) {
-					w_postal= document.getElementById(id+"_mini_label_postal").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_postalform_id_temp")) {
-            w_postal = document.getElementById(id+"_postalform_id_temp").value;
-          }
-          else {
-            w_postal = '';
-          }
-        }
-					
+						if (document.getElementById(id+"_mini_label_state")) {
+							w_state= document.getElementById(id+"_mini_label_state").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_stateform_id_temp")) {
+					w_state = document.getElementById(id+"_stateform_id_temp").value;
+				  }
+				  else {
+					w_state = '';
+				  }
+				}
+						if (document.getElementById(id+"_mini_label_postal")) {
+							w_postal= document.getElementById(id+"_mini_label_postal").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_postalform_id_temp")) {
+					w_postal = document.getElementById(id+"_postalform_id_temp").value;
+				  }
+				  else {
+					w_postal = '';
+				  }
+				}
+							
 				if (document.getElementById(id+"_mini_label_country")) {
 					w_country= document.getElementById(id+"_mini_label_country").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_countryform_id_temp")) {
-            w_country = document.getElementById(id+"_countryform_id_temp").value;
-          }
-          else {
-            w_country = '';
-          }
-        }
+				}
+						else {
+				  if (document.getElementById(id+"_countryform_id_temp")) {
+					w_country = document.getElementById(id+"_countryform_id_temp").value;
+				  }
+				  else {
+					w_country = '';
+				  }
+				}
 				w_mini_labels=[w_street1, w_street2, w_city, w_state, w_postal, w_country];
 				var disabled_input = document.getElementById(id+"_disable_fieldsform_id_temp");
 				
@@ -26653,7 +26673,13 @@ function edit(id) {
 				
 						
 				w_disabled_fields=[w_street1_dis, w_street2_dis, w_city_dis, w_state_dis, w_postal_dis, w_country_dis];
-
+			}
+			else
+			{
+				w_mini_labels=['Street Address', 'Street Address Line 2', 'City', 'State / Province / Region', 'Postal / Zip Code', 'Country',];
+				w_disabled_fields=['no', 'no', 'no', 'no', 'no', 'no'];	
+			}
+			
 				atrs=return_attributes(id+'_street1form_id_temp');
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
@@ -26661,6 +26687,8 @@ function edit(id) {
         disable_fields(id);
         break;
 			}
+
+
 
 			case 'type_submitter_mail':
 			{
@@ -26689,7 +26717,7 @@ function edit(id) {
 						t++;
 						v=k;
 					}
-          if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
+				if(document.getElementById(id+"_rowcol_numform_id_temp") && document.getElementById(id+"_rowcol_numform_id_temp").value)	
 				{
 				
                 if(document.getElementById(id+'_table_little').getAttribute('for_hor'))
@@ -26705,13 +26733,14 @@ function edit(id) {
 				else
 					w_flow="ver";
 				
-				w_rowcol = '';
+				w_rowcol = 1;
 				}
 				atrs=return_attributes(id+'_elementform_id_temp'+v);
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
 				type_checkbox(id, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); break;
 			}
+    
       case 'type_paypal_checkbox': {
 				if (document.getElementById(id+'_hor')) {
 					w_flow="hor";
@@ -26765,8 +26794,11 @@ function edit(id) {
 				w_attr_value=atrs[1];
 				type_paypal_checkbox(id, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_price, w_choices_checked, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value,  w_property, w_property_type, w_property_values,w_quantity); break;
 			}
-			case 'type_radio': {
-        w_randomize=document.getElementById(id+"_randomizeform_id_temp").value;
+			case 'type_radio':
+			{	
+				
+		
+				w_randomize=document.getElementById(id+"_randomizeform_id_temp").value;
 				w_allow_other=document.getElementById(id+"_allow_otherform_id_temp").value;
 
 				v=0;
@@ -26781,7 +26813,8 @@ function edit(id) {
 						t++;
 						v=k;
 					}
-          if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
+					
+					if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
 				{
 				
                 if(document.getElementById(id+'_table_little').getAttribute('for_hor'))
@@ -26798,12 +26831,12 @@ function edit(id) {
 					w_flow="ver";
 				
 				w_rowcol = '';
-				}
+				}	
 				atrs=return_attributes(id+'_elementform_id_temp'+v);
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
 				type_radio(id, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); break;
-			}
+				}
       case 'type_paypal_radio':
 			{	
 				if(document.getElementById(id+'_hor'))
@@ -27444,28 +27477,38 @@ function dublicate(id) {
 				w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title];
 				s=document.getElementById(id+"_element_lastform_id_temp").style.width;
 				w_size=s.substring(0,s.length-2);
+				
+				if(document.getElementById(id+"_mini_label_area_code"))
 				w_mini_labels= [document.getElementById(id+"_mini_label_area_code").innerHTML, document.getElementById(id+"_mini_label_phone_number").innerHTML];
+				else
+				w_mini_labels= ['Area Code', 'Phone Number'];
+				
 				atrs=return_attributes(id+'_element_firstform_id_temp');
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
-				// type_phone(gen, w_field_label, w_field_label_pos, w_size,  w_first_val, w_title, w_required, w_unique, w_class, w_attr_name, w_attr_value); add(0); break;
-				type_phone(gen, w_field_label, w_field_label_pos, w_size, w_first_val, w_title, w_mini_labels, w_required, w_unique, w_class, w_attr_name, w_attr_value);break;
+				type_phone(gen, w_field_label, w_field_label_pos, w_size,  w_first_val, w_title, w_mini_labels, w_required, w_unique, w_class, w_attr_name, w_attr_value); break;
 			}
+			
 			case 'type_name':
 			{
 				if(document.getElementById(id+'_element_middleform_id_temp'))
 					w_name_format="extended";
 				else
 					w_name_format="normal";
-        if (w_name_format == "normal") {
-          w_first_val=[document.getElementById(id+"_element_firstform_id_temp").value, document.getElementById(id+"_element_lastform_id_temp").value];
-          w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title];
-        }
-        else {
-          w_first_val=[document.getElementById(id+"_element_firstform_id_temp").value, document.getElementById(id+"_element_lastform_id_temp").value, document.getElementById(id+"_element_titleform_id_temp").value, document.getElementById(id+"_element_middleform_id_temp").value];
-          w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title, document.getElementById(id+"_element_titleform_id_temp").title,
-          document.getElementById(id+"_element_middleform_id_temp").title];
-        }
+
+				
+				if(w_name_format=="normal")	
+				{
+				w_first_val=[document.getElementById(id+"_element_firstform_id_temp").value, document.getElementById(id+"_element_lastform_id_temp").value];
+				w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title];
+				}
+				else
+				{
+				w_first_val=[document.getElementById(id+"_element_firstform_id_temp").value, document.getElementById(id+"_element_lastform_id_temp").value, document.getElementById(id+"_element_titleform_id_temp").value, document.getElementById(id+"_element_middleform_id_temp").value];
+				w_title=[document.getElementById(id+"_element_firstform_id_temp").title, document.getElementById(id+"_element_lastform_id_temp").title, document.getElementById(id+"_element_titleform_id_temp").title,
+				document.getElementById(id+"_element_middleform_id_temp").title];
+				}
+				
 				if(document.getElementById(id+"_mini_label_title"))
 				w_mini_title = document.getElementById(id+"_mini_label_title").innerHTML;
 				else
@@ -27476,105 +27519,120 @@ function dublicate(id) {
 				else
 				w_mini_middle = "Middle";
 				
-				w_mini_labels = [ w_mini_title, document.getElementById(id+"_mini_label_first").innerHTML,document.getElementById(id+"_mini_label_last").innerHTML, w_mini_middle];
+				w_mini_labels = [ w_mini_title, document.getElementById(id+"_mini_label_first").innerHTML,document.getElementById(id+"_mini_label_last").innerHTML, w_mini_middle]; 	       
+				
+		
 				s=document.getElementById(id+"_element_firstform_id_temp").style.width;
 				w_size=s.substring(0,s.length-2);
 				atrs=return_attributes(id+'_element_firstform_id_temp');
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
-				// type_name(gen, w_field_label, w_field_label_pos, w_first_val, w_title, w_size, w_name_format, w_required, w_unique, w_class, w_attr_name, w_attr_value); add(0); break;
-				type_name(gen, w_field_label, w_field_label_pos, w_first_val, w_title, w_mini_labels, w_size, w_name_format, w_required, w_unique, w_class, w_attr_name, w_attr_value);break;
+				type_name(gen, w_field_label, w_field_label_pos, w_first_val, w_title,  w_mini_labels, w_size, w_name_format, w_required, w_unique, w_class, w_attr_name, w_attr_value);  break;
 			}
 			case 'type_address':
 			{
 				s=document.getElementById(id+"_div_address").style.width;
 				w_size=s.substring(0,s.length-2);
-        if(document.getElementById(id+"_mini_label_street1")) {
-					w_street1= document.getElementById(id+"_mini_label_street1").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_street1form_id_temp")) {
-            w_street1 = document.getElementById(id+"_street1form_id_temp").value;
-          }
-          else {
-            w_street1 = '';
-          }
-        }
-				if (document.getElementById(id+"_mini_label_street2")) {
-					w_street2= document.getElementById(id+"_mini_label_street2").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_street2form_id_temp")) {
-            w_street2 = document.getElementById(id+"_street2form_id_temp").value;
-          }
-          else {
-            w_street2 = '';
-          }
-        }
-					
-				if (document.getElementById(id+"_mini_label_city")) {
-					w_city= document.getElementById(id+"_mini_label_city").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_cityform_id_temp")) {
-            w_city = document.getElementById(id+"_cityform_id_temp").value;
-          }
-          else {
-            w_city = '';
-          }
-        }
+				
+				
+			if(document.getElementById(id+"_disable_fieldsform_id_temp"))
+			{	
+				if(document.getElementById(id+"_mini_label_street1")) {
+							w_street1= document.getElementById(id+"_mini_label_street1").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_street1form_id_temp")) {
+					w_street1 = document.getElementById(id+"_street1form_id_temp").value;
+				  }
+				  else {
+					w_street1 = '';
+				  }
+				}
+						if (document.getElementById(id+"_mini_label_street2")) {
+							w_street2= document.getElementById(id+"_mini_label_street2").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_street2form_id_temp")) {
+					w_street2 = document.getElementById(id+"_street2form_id_temp").value;
+				  }
+				  else {
+					w_street2 = '';
+				  }
+				}
+							
+						if (document.getElementById(id+"_mini_label_city")) {
+							w_city= document.getElementById(id+"_mini_label_city").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_cityform_id_temp")) {
+					w_city = document.getElementById(id+"_cityform_id_temp").value;
+				  }
+				  else {
+					w_city = '';
+				  }
+				}
 
-				if (document.getElementById(id+"_mini_label_state")) {
-					w_state= document.getElementById(id+"_mini_label_state").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_stateform_id_temp")) {
-            w_state = document.getElementById(id+"_stateform_id_temp").value;
-          }
-          else {
-            w_state = '';
-          }
-        }
-				if (document.getElementById(id+"_mini_label_postal")) {
-					w_postal= document.getElementById(id+"_mini_label_postal").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_postalform_id_temp")) {
-            w_postal = document.getElementById(id+"_postalform_id_temp").value;
-          }
-          else {
-            w_postal = '';
-          }
-        }
-					
+						if (document.getElementById(id+"_mini_label_state")) {
+							w_state= document.getElementById(id+"_mini_label_state").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_stateform_id_temp")) {
+					w_state = document.getElementById(id+"_stateform_id_temp").value;
+				  }
+				  else {
+					w_state = '';
+				  }
+				}
+						if (document.getElementById(id+"_mini_label_postal")) {
+							w_postal= document.getElementById(id+"_mini_label_postal").innerHTML;
+				}
+						else {
+				  if (document.getElementById(id+"_postalform_id_temp")) {
+					w_postal = document.getElementById(id+"_postalform_id_temp").value;
+				  }
+				  else {
+					w_postal = '';
+				  }
+				}
+							
 				if (document.getElementById(id+"_mini_label_country")) {
 					w_country= document.getElementById(id+"_mini_label_country").innerHTML;
-        }
-				else {
-          if (document.getElementById(id+"_countryform_id_temp")) {
-            w_country = document.getElementById(id+"_countryform_id_temp").value;
-          }
-          else {
-            w_country = '';
-          }
-        }
+				}
+						else {
+				  if (document.getElementById(id+"_countryform_id_temp")) {
+					w_country = document.getElementById(id+"_countryform_id_temp").value;
+				  }
+				  else {
+					w_country = '';
+				  }
+				}
 				w_mini_labels=[w_street1, w_street2, w_city, w_state, w_postal, w_country];
 				var disabled_input = document.getElementById(id+"_disable_fieldsform_id_temp");
+				
 					w_street1_dis= disabled_input.getAttribute('street1');
 					w_street2_dis= disabled_input.getAttribute('street2');
 					w_city_dis= disabled_input.getAttribute('city');
 					w_state_dis= disabled_input.getAttribute('state');
 					w_postal_dis= disabled_input.getAttribute('postal');
 					w_country_dis= disabled_input.getAttribute('country');
+				
+						
 				w_disabled_fields=[w_street1_dis, w_street2_dis, w_city_dis, w_state_dis, w_postal_dis, w_country_dis];
+			}
+			else
+			{
+				w_mini_labels=['Street Address', 'Street Address Line 2', 'City', 'State / Province / Region', 'Postal / Zip Code', 'Country',];
+				w_disabled_fields=['no', 'no', 'no', 'no', 'no', 'no'];	
+			}
+			
 				atrs=return_attributes(id+'_street1form_id_temp');
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
-				// type_address(gen, w_field_label, w_field_label_pos, w_size, w_required, w_class, w_attr_name, w_attr_value); add(0); break;
 				type_address(gen, w_field_label, w_field_label_pos, w_size, w_mini_labels, w_disabled_fields, w_required, w_class, w_attr_name, w_attr_value);
         disable_fields(id);
         break;
 			}
+
 
 			case 'type_submitter_mail':
 			{
@@ -27588,8 +27646,7 @@ function dublicate(id) {
 				// type_submitter_mail(gen, w_field_label, w_field_label_pos, w_size, w_first_val, w_title, w_send, w_required, w_unique, w_class, w_attr_name, w_attr_value); add(0); break;
 				type_submitter_mail(gen, w_field_label, w_field_label_pos, w_size, w_first_val, w_title, w_send, w_required, w_unique, w_class, w_attr_name, w_attr_value);break;
 			}
-			case 'type_checkbox':
-			{	
+			case 'type_checkbox': {
 				w_randomize=document.getElementById(id+"_randomizeform_id_temp").value;
 				w_allow_other=document.getElementById(id+"_allow_otherform_id_temp").value;
 		
@@ -27605,10 +27662,10 @@ function dublicate(id) {
 						t++;
 						v=k;
 					}
-          if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
+				if(document.getElementById(id+"_rowcol_numform_id_temp") && document.getElementById(id+"_rowcol_numform_id_temp").value)	
 				{
-						
-			 if(document.getElementById(id+'_table_little').getAttribute('for_hor'))
+				
+                if(document.getElementById(id+'_table_little').getAttribute('for_hor'))
 					w_flow="hor"	
 				else
 					w_flow="ver";				
@@ -27621,13 +27678,12 @@ function dublicate(id) {
 				else
 					w_flow="ver";
 				
-				w_rowcol = '';
+				w_rowcol = 1;
 				}
 				atrs=return_attributes(id+'_elementform_id_temp'+v);
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
-				// type_checkbox(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); add(0); break;
-				type_checkbox(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value);break;
+				type_checkbox(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); break;
 			}
       case 'type_paypal_price':
 			{
@@ -27709,6 +27765,8 @@ function dublicate(id) {
 			}
 			case 'type_radio':
 			{	
+				
+		
 				w_randomize=document.getElementById(id+"_randomizeform_id_temp").value;
 				w_allow_other=document.getElementById(id+"_allow_otherform_id_temp").value;
 
@@ -27724,7 +27782,8 @@ function dublicate(id) {
 						t++;
 						v=k;
 					}
-          if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
+					
+					if(document.getElementById(id+"_rowcol_numform_id_temp").value)	
 				{
 				
                 if(document.getElementById(id+'_table_little').getAttribute('for_hor'))
@@ -27741,12 +27800,11 @@ function dublicate(id) {
 					w_flow="ver";
 				
 				w_rowcol = '';
-				}
+				}	
 				atrs=return_attributes(id+'_elementform_id_temp'+v);
 				w_attr_name=atrs[0];
 				w_attr_value=atrs[1];
-				// type_radio(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); add(0); break;
-				type_radio(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value);break;
+				type_radio(gen, w_field_label, w_field_label_pos, w_flow, w_choices, w_choices_checked, w_rowcol, w_required, w_randomize, w_allow_other, w_allow_other_num, w_class, w_attr_name, w_attr_value); break;
 			}
       case 'type_paypal_radio':
 			{	

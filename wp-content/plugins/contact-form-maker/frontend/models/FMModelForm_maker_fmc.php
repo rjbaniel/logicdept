@@ -92,40 +92,47 @@ class FMModelForm_maker_fmc {
         }
       }
 	  elseif (isset($_POST["g-recaptcha-response"])){
-		$privatekey= isset($fmc_settings['private_key']) ? $fmc_settings['private_key'] : '';	
-		$captcha = $_POST['g-recaptcha-response'];
-		$url = 'https://www.google.com/recaptcha/api/siteverify';
-		$data = array(
-			'secret' => $privatekey,
-			'response' => $captcha,
-			'remoteip' => $_SERVER['REMOTE_ADDR']
-		);
-    
-		$curlConfig = array(
-			CURLOPT_URL => $url,
-			CURLOPT_POST => true,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_POSTFIELDS => $data
-		);
+			$privatekey= isset($fmc_settings['private_key']) ? $fmc_settings['private_key'] : '';	
+			$captcha = $_POST['g-recaptcha-response'];
+			$url = 'https://www.google.com/recaptcha/api/siteverify';
+			$data = array(
+				'secret' => $privatekey,
+				'response' => $captcha,
+				'remoteip' => $_SERVER['REMOTE_ADDR']
+			);
+			
+			$curlConfig = array(
+				CURLOPT_URL => $url,
+				CURLOPT_POST => true,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_POSTFIELDS => $data
+			);
 
-		$ch = curl_init();
-		curl_setopt_array($ch, $curlConfig);
-		$response = curl_exec($ch);
-		curl_close($ch);
-    
-		$jsonResponse = json_decode($response);
+			$ch = curl_init();
+			curl_setopt_array($ch, $curlConfig);
+			$response = curl_exec($ch);
+			curl_close($ch);
+			
+			$jsonResponse = json_decode($response);
 
-		if ($jsonResponse->success == "true")
-			$correct = TRUE;
-		else {
-			?>
-			<script>alert("<?php echo addslashes(__('Error, incorrect Security code.', 'form_maker')); ?>");</script>
-			<?php
-		}
+			if ($jsonResponse->success == "true")
+				$correct = TRUE;
+			else {
+				?>
+				<script>alert("<?php echo addslashes(__('Error, incorrect Security code.', 'form_maker')); ?>");</script>
+				<?php
+			}
 	  }
-      else {
-        $correct = TRUE;
-      }
+		else {
+			if(preg_match('(type_arithmetic_captcha|type_captcha|type_recaptcha)', $form -> label_order_current) === 1){
+				?>
+          <script>alert("<?php echo addslashes(__('Error, incorrect Security code.', 'form_maker')); ?>");</script>
+        <?php 
+				$correct = false;
+			}
+			else
+				$correct = true;
+		}
       if ($correct) {
         
         $ip=$_SERVER['REMOTE_ADDR'];
@@ -2276,8 +2283,9 @@ class FMModelForm_maker_fmc {
 				
 				foreach($label_order_original as $key => $label_each) {
 					$type=$label_type[$key];
+					$key1 = $type == 'type_hidden' ? $label_each : $key;
 					if(strpos($row->script_mail_user, "%".$label_each."%")>-1)	 {
-						$new_value = $this->custom_fields_mail($type, $key, $id, $attachment_user, '');				
+						$new_value = $this->custom_fields_mail($type, $key1, $id, $attachment_user, '');				
 						$new_script = str_replace("%".$label_each."%", $new_value, $new_script);
 					}
 					
@@ -2426,8 +2434,9 @@ class FMModelForm_maker_fmc {
 					
 				foreach($label_order_original as $key => $label_each) {							
 					$type=$label_type[$key];
+					$key1 = $type == 'type_hidden' ? $label_each : $key;
 					if(strpos($row->script_mail, "%".$label_each."%")>-1) {
-						$new_value = $this->custom_fields_mail($type, $key, $id, $attachment, '');				
+						$new_value = $this->custom_fields_mail($type, $key1, $id, $attachment, '');				
 						$new_script = str_replace("%".$label_each."%", $new_value, $new_script);							
 					}
 		
@@ -4334,7 +4343,7 @@ class FMModelForm_maker_fmc {
 			break;
         }
         case "type_hidden": {
-          $element = isset($_POST[$element_label]) ? $_POST[$element_label] : NULL;
+          $element = isset($_POST[$key]) ? $_POST[$key] : NULL;
           if(isset($element)) {
             $new_value = $element;	
           }

@@ -74,7 +74,7 @@ class SmuzForm_Notification_Manager extends SmuzForm_Form {
 
 		$subject = $this->processTemplate( $subject, $entry_id, $entry_data );
 
-		$fromText = sanitize_text_field( $fromText );
+		$fromText =  $fromText;
 
 		$message = $this->processTemplate( $template, $entry_id, $entry_data );
 
@@ -95,6 +95,14 @@ class SmuzForm_Notification_Manager extends SmuzForm_Form {
 
 		if ( preg_replace('/\s+/', '', $replyTo) !== '' )
 			$headers[] = "Reply-To: $replyTo" . "\r\n";
+		
+		if (!empty($fromText)) {
+			$adm_email = get_option('admin_email');
+			$headers[] = "From: $fromText <$adm_email>" . "\r\n";
+		} else {
+			$adm_email = get_option('admin_email');
+			$headers[] = "From: WordPress <$adm_email>" . "\r\n";
+		}
 
 		$resp = wp_mail( $emailAddr, $subject, $message, $headers );
 

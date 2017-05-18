@@ -811,11 +811,13 @@ button:focus {
 	vertical-align: middle;
 }
 
-.fm-icon.search-icon{
+
+.fm-button.search-button span{
 	background: #DDCC7F url("../images/buttons.png") no-repeat 55% 57%;
 }
 
-.fm-icon.reset-icon{
+
+.fm-button.reset-button span{
 	background: #C1C1C1 url("../images/buttons.png") no-repeat 37.5% 57%;
 }
 
@@ -827,8 +829,8 @@ button:focus {
 	background: #E5705D url("../images/buttons.png") no-repeat 27.5% 71%;
 }
 
-.fm-icon.show-filter-icon{
-	background: #DDCC7F url("../images/buttons.png") no-repeat 60.5% 18%;
+.fm-button.show-filter-button span{
+	background: #DDCC7F url("../images/buttons.png") no-repeat 61% 18%;
 }
 
 .fm-icon.add-block-ip-icon{

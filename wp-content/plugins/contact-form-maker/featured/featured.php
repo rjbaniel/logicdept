@@ -13,6 +13,12 @@ function fmc_featured_page($current_plugin = '') {
       'content'  => 'Form Maker is a modern and advanced tool for creating WordPress forms easily and fast.',
       'href'     => 'https://web-dorado.com/products/wordpress-form.html'
     ),
+	"mailchimp" => array(
+      'title'    => 'MailChimp WD',
+      'text'     => 'MailChimp WD plugin',
+      'content'  => 'MailChimp WD is a functional plugin developed to create MailChimp subscribe/unsubscribe forms and manage lists from your WordPress site.',
+      'href'     => 'https://web-dorado.com/products/wordpress-mailchimp-wd.html'
+    ),
     "photo-gallery" => array(
       'title'    => 'Photo Gallery',
       'text'     => 'WordPress Photo Gallery plugin',
@@ -145,7 +151,7 @@ function fmc_featured_page($current_plugin = '') {
 	<h3>Featured Plugins</h3>
     <div class="featured_header">
 		<a href="https://web-dorado.com/wordpress-plugins.html?source=contactformmaker" target="_blank">
-			<h1>GET <?php echo $plugins[$current_plugin]["title"]; ?> +22 PLUGINS</h1>
+			<h1>GET <?php echo $plugins[$current_plugin]["title"]; ?> +23 PLUGINS</h1>
 			<h1 class="get_plugins">FOR $100 ONLY <span>- SAVE 70%</span></h1>
 			<div class="try-now">
 				<span>TRY NOW</span>

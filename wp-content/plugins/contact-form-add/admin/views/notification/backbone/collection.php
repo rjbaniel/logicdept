@@ -22,6 +22,8 @@
             <h4><?php smuzform_translate_e( 'Configure Email Notification' ) ?></h4>
             <p class="description"><?php smuzform_translate_e( 'Receive an email when someone fills your form.' ) ?></p>
           </legend>
+
+          <p class='alert alert-info emailNotSendingInfo'><a href='https://kinsta.com/knowledgebase/wordpress-not-sending-emails/' target='_blank'>How to Fix the WordPress Not Sending Emails Issue</a></p>
           
           <fieldset>
 
@@ -41,7 +43,6 @@
               <label class="control-label inlineLabel" for="emailSenderName"><?php smuzform_translate_e( 'Sender Name' ) ?></label>
 
               <input id="emailSenderName" type="text" class="form-control inlineField" value="<%= extraData.fromText %>" />
-
             </div>
 
              <div class="form-group">
@@ -175,7 +176,6 @@
               <label class="control-label inlineLabel" for="emailReplyToEmail"><?php smuzform_translate_e( 'Reply-To' ) ?></label>
 
               <input id="emailReplyToEmail" type="email" class="form-control inlineField" value="<%- extraData.replyToEmail %>" />
-              <p class="help-block"></p>
 
             </div>
 

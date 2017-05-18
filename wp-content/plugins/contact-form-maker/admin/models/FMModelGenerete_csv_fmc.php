@@ -25,12 +25,16 @@ class FMModelGenerete_csv_fmc {
 		$group_id_s = array();
 		$form_id = (int)$_REQUEST['form_id'];
 		$limitstart = (int)$_REQUEST['limitstart'];
+		$search_labels	= isset($_REQUEST['search_labels']) ? $_REQUEST['search_labels'] : '';
 			
 		$paypal_info_fields = array('currency', 'ord_last_modified', 'status', 'full_name', 'fax', 'mobile_phone', 'email', 'phone', 'address', 'paypal_info',  'ipn', 'tax', 'shipping');
 		$paypal_info_labels = array( 'Currency', 'Last modified', 'Status', 'Full Name', 'Fax', 'Mobile phone', 'Email', 'Phone', 'Address', 'Paypal info', 'IPN', 'Tax', 'Shipping');
 		
-		$query = $wpdb->prepare("SELECT distinct group_id FROM " . $wpdb->prefix . "formmaker_submits where form_id=%d", $form_id);		
-		$group_id_s = $wpdb->get_col($query);	
+		
+		if($search_labels){
+			$query = $wpdb->prepare("SELECT distinct group_id FROM " . $wpdb->prefix . "formmaker_submits where form_id=%d and group_id IN(".$search_labels.")", $form_id);		
+			$group_id_s = $wpdb->get_col($query);	
+		}
 
 		$query = $wpdb->prepare("SELECT distinct element_label FROM " . $wpdb->prefix . "formmaker_submits where form_id=%d",$form_id);	
 		$labels = $wpdb->get_col($query);
@@ -72,12 +76,18 @@ class FMModelGenerete_csv_fmc {
 		$m = count($sorted_labels);
 		$wpdb->query("SET SESSION group_concat_max_len = 1000000");
 		
-		$query = $wpdb->prepare("SELECT group_id, ip, date, user_id_wd, GROUP_CONCAT( element_label SEPARATOR ',') as element_label, GROUP_CONCAT( element_value SEPARATOR '*:*el_value*:*') as element_value FROM " . $wpdb->prefix . "formmaker_submits where form_id= %d GROUP BY group_id ORDER BY date ASC limit %d, %d", $form_id, $limitstart, 1000);
-		$rows = $wpdb->get_results($query, OBJECT_K);
+		$rows = array();
+		
+		if($search_labels){
+			$query = $wpdb->prepare("SELECT group_id, ip, date, user_id_wd, GROUP_CONCAT( element_label SEPARATOR ',') as element_label, GROUP_CONCAT( element_value SEPARATOR '*:*el_value*:*') as element_value FROM " . $wpdb->prefix . "formmaker_submits where form_id= %d and group_id IN (".$search_labels.") GROUP BY group_id ORDER BY date ASC limit %d, %d", $form_id, $limitstart, 1000);
+			$rows = $wpdb->get_results($query, OBJECT_K);
+		}
 
 		$data = array();
 		$group_id_s_count = $limitstart + 1000 < count($group_id_s) ? $limitstart + 1000 : count($group_id_s);
 
+		sort($group_id_s,SORT_NUMERIC);
+		
 		for ($www = $limitstart; $www < $group_id_s_count; $www++) {
 			$i = $group_id_s[$www];
 			$field_key = array_search($i, $label_id);

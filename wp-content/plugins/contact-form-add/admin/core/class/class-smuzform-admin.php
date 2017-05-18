@@ -218,13 +218,15 @@ class SmuzForm_Admin {
 
 		//CSS
 
-		$bootstrap_url = smuzform_admin_asset( 'css/bootstrap.min.css' );
+		$bootstrap_url = smuzform_admin_asset( 'css/bootstrap.min.css?load=fresh1' );
 
 		$style_url = smuzform_admin_asset( 'css/style.css' );
 
 		wp_enqueue_style( 'smuzform-bootstrap', $bootstrap_url  );
 
 		wp_enqueue_style( 'smuzform-main', $style_url  );
+
+		wp_enqueue_style( 'google-font-work-sans', "https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&amp;subset=latin-ext" );
 
 		//JS
 
@@ -284,6 +286,8 @@ class SmuzForm_Admin {
 
 		//CSS
 
+		wp_enqueue_style( 'google-font-work-sans', "https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&amp;subset=latin-ext" );
+
 		$bootstrap_url = smuzform_admin_asset( 'css/bootstrap.min.css' );
 
 		$style_url = smuzform_admin_asset( 'css/style.css' );
@@ -299,6 +303,8 @@ class SmuzForm_Admin {
 		wp_enqueue_style( 'smuzform-entry-main', $entry_style_url  );
 
 		wp_enqueue_style( 'smuzform-datatables', $datatable_style_url  );
+
+
 
 		//JS
 
@@ -368,6 +374,8 @@ class SmuzForm_Admin {
 			return false;
 
 		//CSS
+
+		wp_enqueue_style( 'google-font-work-sans', "https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&amp;subset=latin-ext" );
 
 		$bootstrap_url = smuzform_admin_asset( 'css/bootstrap.min.css' );
 
@@ -446,6 +454,8 @@ class SmuzForm_Admin {
 			return false;
 
 		//CSS
+
+		wp_enqueue_style( 'google-font-work-sans', "https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800&amp;subset=latin-ext" );
 
 		$bootstrap_url = smuzform_admin_asset( 'css/bootstrap.min.css' );
 

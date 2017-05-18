@@ -129,4 +129,18 @@ function smuz_escapeHtml(string) {
 }
 
 $(document).ready(function(){$('.toplevel_page_smuz-forms-main').addClass('current');})
+
+$(document).ready( function() {
+
+  $('#premiumModal').modal({
+
+    backdrop: 'static',
+    keyboard: false,
+    show: true
+
+
+  });
+
+});
+
 }(jQuery));

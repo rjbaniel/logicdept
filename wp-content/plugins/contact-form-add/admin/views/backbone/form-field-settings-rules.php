@@ -13,7 +13,22 @@
           
         <div id="ruleBuilderCont">
           
-          <label><input type="checkbox" id="enableConditionalLogic" <% if ( ruleEnabled === true ) { %> <%- 'checked' %> <% } %> /> <?php smuzform_translate_e( 'Enable' ) ?></label>
+          <label>
+
+         <?php if ( version_compare(  '1.7' , get_option( 'smuzform_plugin_version' )  ) === 1 ): ?>
+
+            <input type="checkbox" id="enableConditionalLogic" <% if ( ruleEnabled === true ) { %> <%- 'checked' %> <% } %> /> <?php smuzform_translate_e( 'Enable' ) ?>
+
+          <?php else: ?>
+
+            <p class="description"><h4><a href="http://web-settler.com/form-builder/?ref=logic" target="_blank"><?php smuzform_translate_e( 'Purchase premium version to unlock Conditional Logic.' ) ?></a></h4></p>
+
+            <input type="checkbox" disabled > <?php smuzform_translate_e( 'Enable' ) ?>
+
+          <?php endif; ?>
+
+
+          </label>
 
           <ul id="rules">
             
@@ -72,7 +87,7 @@
       </div>
       
       <div class="panel-footer">
-        <small>If this field is *required logic may not work.</small>
+        <small>If the current field is *required logic may not work.</small>
       </div>
 
     </div>

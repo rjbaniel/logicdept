@@ -61,3 +61,29 @@
 <?php else: ?>
 <?php include smuzform_admin_view( 'entry/edit-entry.php' ) ?>
 <?php endif; ?>
+
+
+<?php if ( version_compare(  '1.7' , get_option( 'smuzform_plugin_version' )  ) !== 1 ): ?>
+<!-- Modal -->
+  <div class="modal show" id="premiumModal" role="dialog">
+    <div class="modal-dialog" style="width: 45%;">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+         
+          <h4 class="modal-title" id="premiumModalUnlockHeading">Unlock Entries</h4>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+        <a href="http://web-settler.com/form-builder/?ref=entry" target="_blank" style="color: #fff; font-size:22px "><img src="<?php echo SMUZFORM_PLUGIN_URL.'/admin/assets/img/stack.png'; ?>" style="width: 200px;"></a>
+          <p id="premiumModalUnlockDescription"><div style="text-align: center; padding:10px 30px; background:#03A9F4; "><a href="http://web-settler.com/form-builder/?ref=entry" target="_blank" style="color: #fff; font-size:22px ">Purchase Paid Version To Unlock</a></div></p>
+        </div>
+        <div class="modal-footer">
+         <a id="formEntriesAction" href="<?php echo admin_url( 'admin.php?page=smuz-forms&form_id='.intval($_GET['form_id']) ); ?>"><?php smuzform_translate_e( 'Go Back to Form Builder..' ) ?></a>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <?php endif; ?>

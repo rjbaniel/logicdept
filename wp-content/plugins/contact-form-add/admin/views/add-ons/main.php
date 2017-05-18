@@ -7,7 +7,9 @@
 		<li>Unobstructed access to new features</li>
 	</ul>
 	<br>
-	<a href="http://web-settler.com/form-builder/"> <button id="premium_cta">Get Everything</button></a>
+	<form method="POST" action="http://sites.fastspring.com/wpscrolltotop/product/formbuilderpremium">
+				<p><a href="http://sites.fastspring.com/wpscrolltotop/product/formbuilderpremium"> <button id="premium_cta">Get Everything</button></a></p>
+			</form>
 </div>
 <div id="gr_wrapper" class="w3-row">
 	<div class="w3-card gr-item">

@@ -28,7 +28,7 @@ get_header(); ?>
 			</div>
 		</div>
 		<div class="contact-form flex-row__item">
-			<div><?php smuzform_render_form( 103 ) ?></div>
+			<div><?php smuzform_render_form( 267 ); ?></div>
 		</div>
 	</main><!-- #main -->
 </div><!-- #primary -->

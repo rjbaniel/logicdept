@@ -43,7 +43,7 @@ define( 'SMUZFORM_SHORTCODE', 'sform' );
 
 define( 'SMUZFORM_UPLOAD_DIR_NAME', 'smuzformfiles-' );
 
-define( 'SMUZFORM_PLUGIN_VERSION', '1.4' );
+define( 'SMUZFORM_PLUGIN_VERSION', '1.7' );
 
 define( 'SMUZFORM_ENTRIES_PER_PAGE', 10 );
 
