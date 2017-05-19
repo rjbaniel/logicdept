@@ -17,3 +17,4 @@ wp-admin/error_log
 /sitemap.xml
 /sitemap.xml.gz
 /error_log
+.ftpquota
