@@ -1,7 +1,7 @@
 var collapsableHeaders = document.getElementsByClassName('collapsable__header');
 var aboutHeaders = document.getElementsByClassName('team-member__header');
 var loadMoreProjects = document.getElementById('loadMoreProjects');
-var next_page = 1;
+var next_page = 2;
 if (loadMoreProjects) {
 	loadMoreProjects.addEventListener('click', ajaxLoadMoreProjects);
 }
